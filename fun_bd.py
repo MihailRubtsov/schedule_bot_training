@@ -28,7 +28,7 @@ def watc_sched(id):
         cur.execute(f"""SELECT * FROM user_sched WHERE id_tel = {id}
 """)
         res = cur.fetchone ()
-        print(res)
+        return res
 
 
 def del_sched(id):

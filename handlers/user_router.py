@@ -5,6 +5,7 @@ from aiogram.fsm.state import State, StatesGroup
 from handlers.keybooards import rep_keb_n
 from handlers.keybooards import key_day
 from dotenv import load_dotenv
+
 import sys
 import sqlite3
 import os
@@ -31,6 +32,10 @@ async def command_start(message:types.Message):
 @user_router.message(Command("help"))
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, 'помощь')
+
+
+
+
 
 
 
