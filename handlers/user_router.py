@@ -1,15 +1,8 @@
 from aiogram import Bot, types, Dispatcher, Router 
 from aiogram.filters.command import Command
-from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
 from handlers.keybooards import rep_keb_n
-from handlers.keybooards import key_day
 from dotenv import load_dotenv
-
-import sys
-import sqlite3
 import os
-import sys
 load_dotenv()
 
 Token = os.getenv('API')
@@ -26,6 +19,9 @@ async def command_start(message:types.Message):
 Этот бот будет напоминать тебе о твоих тренировках каждый день. 
 Так же можно отключить оповещение отдыха. 
 Но для начало надо заполнить твой план тренировок для коректной работы.""", reply_markup=rep_keb_n())
+    with open('all_id.txt', 'w') as file:
+        file.write(str(message.from_user.id)+',')
+    
 
 
 
