@@ -1,4 +1,2 @@
-import datetime
-a = datetime.datetime.now()
-a = str(a).split(' ')[1].split(':')
-print(int(a[1]))
+print(5)
+print('Вроде как работает')

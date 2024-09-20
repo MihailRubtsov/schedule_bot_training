@@ -23,18 +23,19 @@ days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sun
 
 async def schedule_otpr():
     while True:
-        a = datetime.datetime.now()
         dday = int(datetime.date.today().weekday())
-        a = str(a).split(' ')[1].split(':')
+        a = str(datetime.datetime.now()).split(' ')[1].split(':')
         minu = int(a[1])
+        print(a)
         if minu == 0:
             data = dat_tren(days[dday])
-            for i in data:
+            for i in data:   
                 try:
-                    await bot.send_message(f'Вот ваш сегодняшний план тренировок:\n{str(i[0])}', str(i[1]))
+                    await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                    print(minu)
                 except:
                     print('ошибка айди')
-        await asyncio.sleep(60)
+        await asyncio.sleep(55)
 
 
 def work():
