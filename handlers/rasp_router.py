@@ -87,7 +87,7 @@ async def sun_tr(message: types.Message, state: FSMContext):
 
 
 
-
+# функция которая присылает все рассписание пользователю
 @rasp_router.message(Command("allschedule"))
 async def help(message: types.Message):
     if prov_in(message.from_user.id) == True:
@@ -110,7 +110,7 @@ async def help(message: types.Message):
     else:
         await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание', reply_markup=rep_keb_n())
 
-
+#удаление рассписания
 @rasp_router.message(Command("delschedule"))
 async def help(message: types.Message):
     if prov_in(message.from_user.id) == True:
@@ -121,7 +121,7 @@ async def help(message: types.Message):
 
 
 
-
+#вызывает клавиатуру с днями недели или говорит что не рассписания
 @rasp_router.message(Command("schedule"))
 async def help(message: types.Message):
     if prov_in(message.from_user.id):
