@@ -19,22 +19,33 @@ dp.include_router(user_router)
 dp.include_router(rasp_router)
 
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Saturday_t', 'Sunday_t']
 
-
+# настройка автоматического отправления рассписания
 async def schedule_otpr():
     while True:
         dday = int(datetime.date.today().weekday())
         a = str(datetime.datetime.now()).split(' ')[1].split(':')
+        chass = int(a[0])
         minu = int(a[1])
-        print(a)
-        if minu == 0:
-            data = dat_tren(days[dday])
-            for i in data:   
-                try:
-                    await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
-                    print(minu)
-                except:
-                    print('ошибка айди')
+        data = dat_tren(days[dday], days_t[dday])
+        for i in data:
+            if i[-1] != None:
+                chass1 = int(i[-1][:2])
+                minu1 = int(i[-1][3:])
+                if chass1 == chass and minu1 == minu:
+                    try:
+                        await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                        print(minu)
+                    except:
+                        print('ошибка айди')
+            else:
+                if chass == 10 and minu == 0:
+                    try:
+                        await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                        print(minu)
+                    except:
+                        print('ошибка айди')
         await asyncio.sleep(55)
 
 

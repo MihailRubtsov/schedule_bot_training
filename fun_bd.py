@@ -7,17 +7,28 @@ def add_sched(id, mo, tu, we, th, fr, sa, su):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute("""
-            INSERT INTO user_sched (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (id, mo, tu, we, th, fr, sa, su))
 
 
+# добавление в БД с временем отправки в каждый день
 
-#функция присылает что нужно делать в конкретный день для каждого пользователя
-def dat_tren(day):
+def add_sched_time(id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat, sut):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""SELECT id_tel, {day} FROM user_sched""")
+        cur.execute("""
+            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Monday_t, Tuesday_t, Wednesday_t, Thursday_t, Friday_t, Saturday_t, Sunday_t)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat, sut))
+
+
+
+#функция присылает что нужно делать в конкретный день для каждого пользователя
+def dat_tren(day, day_t):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT id_tel, {day}, {day_t} FROM user_sched_2""")
         res = cur.fetchall()
         return res
 
@@ -25,7 +36,7 @@ def dat_tren(day):
 def watc_sched(id):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""SELECT * FROM user_sched WHERE id_tel = {id}
+        cur.execute(f"""SELECT * FROM user_sched_2 WHERE id_tel = {id}
 """)
         res = cur.fetchone ()
         return res
@@ -34,7 +45,7 @@ def watc_sched(id):
 def watc_sched_day(id, day):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""SELECT {day} FROM user_sched WHERE id_tel = {id}
+        cur.execute(f"""SELECT {day} FROM user_sched_2 WHERE id_tel = {id}
 """)
         res = cur.fetchone()[0]
         return res
@@ -43,7 +54,7 @@ def watc_sched_day(id, day):
 def del_sched(id):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""DELETE FROM user_sched WHERE id_tel = {id}
+        cur.execute(f"""DELETE FROM user_sched_2 WHERE id_tel = {id}
 """)
     
 # проверка есть ли план тренировок у пользователя
@@ -51,12 +62,21 @@ def prov_in(id):
     pr = False
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""SELECT id_tel FROM user_sched
+        cur.execute(f"""SELECT id_tel FROM user_sched_2
 """)
         res = cur.fetchall()
     
     for i in res:
         if int(i[0]) == int(id):
             pr = True
+    return pr
+
+
+
+
+def prov_time(mot, tut, wet, tht, frt, sat, sut):
+    pr = True
+
+    
     return pr
         
