@@ -73,10 +73,18 @@ def prov_in(id):
 
 
 
-
-def prov_time(mot, tut, wet, tht, frt, sat, sut):
+#  функция проверки времени у пользователя чтобы не было проблем при отправке
+def prov_time(time):
     pr = True
-
-    
+    try:
+        a = time.split(':')
+        h = int(a[0])
+        m = int(a[1])
+        if h < 0 or h > 24:
+            pr = False
+        if m < 0 or m > 60:
+            pr = False
+    except:
+        pr = False
     return pr
         

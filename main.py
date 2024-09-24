@@ -25,12 +25,13 @@ days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Sat
 async def schedule_otpr():
     while True:
         dday = int(datetime.date.today().weekday())
-        a = str(datetime.datetime.now()).split(' ')[1].split(':')
+        a = str(datetime.datetime.now()).split(' ')[1].split(':')# время во время проверки
         chass = int(a[0])
-        minu = int(a[1])
-        data = dat_tren(days[dday], days_t[dday])
+        minu = int(a[1]) 
+        data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
         for i in data:
-            if i[-1] != None:
+            print(i)
+            if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
                 chass1 = int(i[-1][:2])
                 minu1 = int(i[-1][3:])
                 if chass1 == chass and minu1 == minu:
@@ -39,7 +40,7 @@ async def schedule_otpr():
                         print(minu)
                     except:
                         print('ошибка айди')
-            else:
+            else: # если нет конкретного времени то отправление только в 10 часов утра
                 if chass == 10 and minu == 0:
                     try:
                         await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
@@ -50,7 +51,7 @@ async def schedule_otpr():
 
 
 def work():
-    asyncio.run(schedule_otpr())
+    asyncio.run(schedule_otpr()) # функция второго потока для того чтобы работа проверка времени отправки пользователям
 
 
 async def main():

@@ -1,10 +1,15 @@
-def prov_time(mot):
-    pr = True
 
-    if len(mot) <= 5 or int(mot[:2]) <0 or int(mot[:2]) > 24 or int(mot[3:]) <0 or int(mot[3:]) > 60:
+def prov_time(time):
+    pr = True
+    try:
+        a = time.split(':')
+        h = int(a[0])
+        m = int(a[1])
+        if h < 0 or h > 24:
+            pr = False
+        if m < 0 or m > 60:
+            pr = False
+    except:
         pr = False
     return pr
-
-
-
-print(prov_time('0^45'))
+print(prov_time('23:54'))

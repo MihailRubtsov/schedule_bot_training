@@ -1,7 +1,7 @@
 from aiogram import types
 
 
-
+# две клавиатуры которые имеются у пользователя
 
 def rep_keb_n():
     buttons = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help'), types.KeyboardButton(text='/addschedule'),types.KeyboardButton(text='/schedule')],
