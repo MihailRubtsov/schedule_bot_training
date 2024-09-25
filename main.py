@@ -47,7 +47,7 @@ async def schedule_otpr():
                         print(minu)
                     except:
                         print('ошибка айди')
-        await asyncio.sleep(55)
+        await asyncio.sleep(30)
 
 
 def work():
