@@ -5,7 +5,7 @@ from aiogram import types
 
 def rep_keb_n():
     buttons = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help'), types.KeyboardButton(text='/addschedule'),types.KeyboardButton(text='/schedule')],
-               [types.KeyboardButton(text='/allschedule'),types.KeyboardButton(text='/delschedule'), types.KeyboardButton(text='/addschedule+time')]]
+               [types.KeyboardButton(text='/allschedule'),types.KeyboardButton(text='/delschedule'), types.KeyboardButton(text='/addscheduletime'), types.KeyboardButton(text='/time_change')]]
     return types.ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
 def key_day():

@@ -87,4 +87,19 @@ def prov_time(time):
     except:
         pr = False
     return pr
-        
+
+def prov_dayy(mess):
+    dayss = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    if mess in dayss: return True
+    return False
+    
+
+
+def add_time_user(id, ddaay, ttiime):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute("""
+            UPDATE user_sched_2 
+            SET {}_t = ? 
+            WHERE id_tel = ?
+        """.format(ddaay), (ttiime, id))

@@ -6,8 +6,7 @@ from dotenv import load_dotenv
 from handlers.keybooards import rep_keb_n
 from handlers.keybooards import rep_keb_n
 from handlers.keybooards import key_day
-from fun_bd import prov_time
-from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time
+from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time, prov_time, prov_dayy, add_time_user
 import os
 load_dotenv()
 
@@ -17,6 +16,14 @@ rasp_router = Router()
 
 
 # создание класса стате для того чтобы просить у пользователя расписание
+
+
+class chenge_time(StatesGroup):
+    daay = State()
+    ttime = State()
+
+
+
 class train_sched(StatesGroup):
     mon = State()
     tue = State()
@@ -208,7 +215,7 @@ async def help(message: types.Message):
 # добавление рассписания + время
 
 
-@rasp_router.message(Command('addschedule+time'))
+@rasp_router.message(Command('addscheduletime'))
 async def addschedule_time(message: types.Message, state :FSMContext):
     if not prov_in(int(message.from_user.id)):
         await bot.send_message(message.from_user.id, 'Пришли твои тренировки в понедельник')
@@ -334,3 +341,37 @@ async def sun_tr(message: types.Message, state: FSMContext):
     else:
         await bot.send_message(message.from_user.id, 'вы ввели некоректное время для воскресенья, повторите попытку заполнения расписания заново без ошибок')
         await state.clear()
+
+@rasp_router.message(Command("time_change"))
+async def add_time(message: types.Message, state: FSMContext):
+    if not prov_in(message.from_user.id):
+        await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время')
+    else:
+        await bot.send_message(message.from_user.id, 'пришлите день недели на английском языке время которого вы хотите заменить')
+        await state.set_state(chenge_time.daay)
+
+@rasp_router.message(chenge_time.daay)
+async def change_day(message: types.message, state:FSMContext):
+    if prov_dayy(message.text):
+        await state.update_data(daay = message.text)
+        await bot.send_message(message.from_user.id, 'пришлите время для этого дня')
+        await state.set_state(chenge_time.ttime)
+    
+    else:
+        await bot.send_message(message.from_user.id, 'вы прислали не правильное название дня недели')
+        await state.clear()
+
+
+@rasp_router.message(chenge_time.ttime)
+async def change_day(message: types.message, state:FSMContext):
+    if prov_time(message.text):
+        await state.update_data(ttime = message.text)
+        await bot.send_message(message.from_user.id, 'вы успешно заменили время')
+        data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
+        print(data)
+        add_time_user(int(message.from_user.id),data['daay'],data['ttime'])
+        await state.clear()
+    else:
+        await bot.send_message(message.from_user.id, 'вы ввели некоректное время, повторите попытку заполнения расписания заново без ошибок')
+        await state.clear()
+    
