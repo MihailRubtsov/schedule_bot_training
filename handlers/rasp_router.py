@@ -342,6 +342,10 @@ async def sun_tr(message: types.Message, state: FSMContext):
         await bot.send_message(message.from_user.id, 'вы ввели некоректное время для воскресенья, повторите попытку заполнения расписания заново без ошибок')
         await state.clear()
 
+
+
+
+# функция по добавлению времени , а так же замене времени в конкретный день
 @rasp_router.message(Command("time_change"))
 async def add_time(message: types.Message, state: FSMContext):
     if not prov_in(message.from_user.id):
