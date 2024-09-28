@@ -3,9 +3,7 @@ from aiogram.filters.command import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from dotenv import load_dotenv
-from handlers.keybooards import rep_keb_n
-from handlers.keybooards import rep_keb_n
-from handlers.keybooards import key_day
+from handlers.keybooards import kebad, kebn, kebv, key_day
 from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time, prov_time, prov_dayy, add_time_user, che_rasp_user
 import os
 load_dotenv()
@@ -16,6 +14,9 @@ rasp_router = Router()
 
 
 # создание класса стате для того чтобы просить у пользователя расписание
+
+class del_rasp(StatesGroup):
+    del_ch = State()
 
 
 class chenge_time(StatesGroup):
@@ -63,7 +64,7 @@ async def addschedule(message: types.Message, state :FSMContext):
         await bot.send_message(message.from_user.id, 'Пришли твои тренировки в понедельник')
         await state.set_state(train_sched.mon)
     else:
-        await bot.send_message(message.from_user.id, 'ваше рассписание уже есть')
+        await bot.send_message(message.from_user.id, 'Ваше рассписание уже есть', reply_markup=kebn())
         await state.clear()
 
 
@@ -106,7 +107,7 @@ async def sat_tr(message: types.Message, state: FSMContext):
 @rasp_router.message(train_sched.sun)
 async def sun_tr(message: types.Message, state: FSMContext):
     await state.update_data(sun = message.text)
-    await bot.send_message(message.from_user.id, 'Вы закончили заполнение расписания', reply_markup=rep_keb_n())
+    await bot.send_message(message.from_user.id, 'Вы закончили заполнение расписания', reply_markup=kebn())
     data = await state.get_data()
     add_sched(int(message.from_user.id),data['mon'],data['tue'],data['wed'],data['thu'],data['fri'],data['sat'],data['sun'])
     await state.clear()
@@ -136,68 +137,81 @@ async def help(message: types.Message):
 Суббота:
 {a[7]}
 Воскресенье:
-{a[8]}""")
+{a[8]}""", reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание', reply_markup=rep_keb_n())
+        await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание', reply_markup=kebn())
 
 #удаление рассписания
 @rasp_router.message(Command("delschedule"))
-async def help(message: types.Message):
+async def help(message: types.Message, state: FSMContext):
     if prov_in(message.from_user.id) == True:
-        del_sched(int(message.from_user.id))
-        await bot.send_message(message.from_user.id, f'Ваше рассписание успешно удалено', reply_markup=rep_keb_n())
+        await bot.send_message(message.from_user.id, f'Вы точно хотите удалить расписание?')
+        await state.set_state(del_rasp.del_ch)
     else:
-        await bot.send_message(message.from_user.id, 'Вам нечего удалять')
+        await bot.send_message(message.from_user.id, 'Вам нечего удалять', reply_markup=kebn())
+        await state.clear()
 
+
+
+@rasp_router.message(del_rasp.del_ch)
+async def help(message: types.Message, state: FSMContext):
+    if message.text.lower() == 'да' or message.text.lower() == 'yes':
+        del_sched(int(message.from_user.id))
+        await bot.send_message(message.from_user.id, f'Ваше рассписание успешно удалено', reply_markup=kebn())
+        await state.clear()
+    else:
+        await bot.send_message(message.from_user.id, 'Вы не подтвердили удаление', reply_markup=kebn())
+        await state.clear()
 
 
 #вызывает клавиатуру с днями недели или говорит что не рассписания
 @rasp_router.message(Command("schedule"))
 async def help(message: types.Message):
+    print(5)
     if prov_in(message.from_user.id):
         await bot.send_message(message.from_user.id, 'Выбери день недели', reply_markup= key_day())
     else:
-        await bot.send_message(message.from_user.id, 'Вы еще не добавили свое рассписание', reply_markup= rep_keb_n())
+        await bot.send_message(message.from_user.id, 'Вы еще не добавили свое рассписание', reply_markup= kebn())
 
 @rasp_router.message(Command("Monday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Monday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в понедельник')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 @rasp_router.message(Command("Tuesday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Tuesday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка во вторник')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 @rasp_router.message(Command("Wednesday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Wednesday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в среду')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 @rasp_router.message(Command("Thursday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Thursday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в четверг')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 @rasp_router.message(Command("Friday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Friday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в пятницу')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 @rasp_router.message(Command("Saturday"))
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Saturday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в субботу')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 
@@ -205,7 +219,7 @@ async def help(message: types.Message):
 async def help(message: types.Message):
     a = watc_sched_day(message.from_user.id, 'Sunday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в воскресенье')
-    await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
+    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
 
 
 
@@ -225,7 +239,7 @@ async def addschedule_time(message: types.Message, state :FSMContext):
         await bot.send_message(message.from_user.id, 'Пришли твои тренировки в понедельник')
         await state.set_state(train_sched_time.mon)
     else:
-        await bot.send_message(message.from_user.id, 'ваше рассписание уже есть')
+        await bot.send_message(message.from_user.id, 'Ваше рассписание уже есть', reply_markup=kebn())
         await state.clear()
 
 
@@ -268,7 +282,7 @@ async def sat_tr(message: types.Message, state: FSMContext):
 @rasp_router.message(train_sched_time.sun)
 async def sun_tr(message: types.Message, state: FSMContext):
     await state.update_data(sun = message.text)
-    await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать в понедельник')
+    await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать в понедельник')
     await state.set_state(train_sched_time.mon_t)
 
 # уже начало заполнение времени
@@ -276,60 +290,60 @@ async def sun_tr(message: types.Message, state: FSMContext):
 async def mon_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(mon_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать во вторник')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать во вторник')
         await state.set_state(train_sched_time.tue_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для понедельника, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для понедельника, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 @rasp_router.message(train_sched_time.tue_t)
 async def tue_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(tue_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать среду')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать среду')
         await state.set_state(train_sched_time.wed_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для вторника, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для вторника, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 @rasp_router.message(train_sched_time.wed_t)
 async def wed_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(wed_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать четверг')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать четверг')
         await state.set_state(train_sched_time.thu_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для среды, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для среды, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 @rasp_router.message(train_sched_time.thu_t)
 async def thu_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(thu_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать пятницу')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать пятницу')
         await state.set_state(train_sched_time.fri_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для четверга, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для четверга, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 @rasp_router.message(train_sched_time.fri_t)
 async def fri_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(fri_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать субботу')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать субботу')
         await state.set_state(train_sched_time.sat_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для пятницы, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для пятницы, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 @rasp_router.message(train_sched_time.sat_t)
 async def sat_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(sat_t = message.text)
-        await bot.send_message(message.from_user.id, 'во сколько времени вам напоминать воскресенье')
+        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать воскресенье')
         await state.set_state(train_sched_time.sun_t)
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для субботы, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для субботы, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 
@@ -337,13 +351,13 @@ async def sat_tr(message: types.Message, state: FSMContext):
 async def sun_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(sun_t = message.text)
-        await bot.send_message(message.from_user.id, 'Вы закончили заполнение расписания', reply_markup=rep_keb_n())
+        await bot.send_message(message.from_user.id, 'Вы закончили заполнение расписания', reply_markup=kebn())
         data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
         print(data)
         add_sched_time(int(message.from_user.id),data['mon'],data['tue'],data['wed'],data['thu'],data['fri'],data['sat'],data['sun'],data['mon_t'],data['tue_t'],data['wed_t'],data['thu_t'],data['fri_t'],data['sat_t'],data['sun_t'])
         await state.clear()
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время для воскресенья, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для воскресенья, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
 
 
@@ -353,20 +367,20 @@ async def sun_tr(message: types.Message, state: FSMContext):
 @rasp_router.message(Command("time_change"))
 async def add_time(message: types.Message, state: FSMContext):
     if not prov_in(message.from_user.id):
-        await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время')
+        await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время', reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'пришлите день недели на английском языке время которого вы хотите заменить')
+        await bot.send_message(message.from_user.id, 'Пришлите день недели на английском языке время которого вы хотите заменить')
         await state.set_state(chenge_time.daay)
 
 @rasp_router.message(chenge_time.daay)
 async def change_day(message: types.message, state:FSMContext):
     if prov_dayy(message.text):
         await state.update_data(daay = message.text)
-        await bot.send_message(message.from_user.id, 'пришлите время для этого дня')
+        await bot.send_message(message.from_user.id, 'Пришлите время для этого дня')
         await state.set_state(chenge_time.ttime)
     
     else:
-        await bot.send_message(message.from_user.id, 'вы прислали не правильное название дня недели')
+        await bot.send_message(message.from_user.id, 'Вы прислали не правильное название дня недели', reply_markup=kebn())
         await state.clear()
 
 
@@ -374,13 +388,13 @@ async def change_day(message: types.message, state:FSMContext):
 async def change_day(message: types.message, state:FSMContext):
     if prov_time(message.text):
         await state.update_data(ttime = message.text)
-        await bot.send_message(message.from_user.id, 'вы успешно заменили время')
+        await bot.send_message(message.from_user.id, 'Вы успешно заменили время', reply_markup=kebn())
         data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
         print(data)
         add_time_user(int(message.from_user.id),data['daay'],data['ttime'])
         await state.clear()
     else:
-        await bot.send_message(message.from_user.id, 'вы ввели некоректное время, повторите попытку заполнения расписания заново без ошибок')
+        await bot.send_message(message.from_user.id, 'Вы ввели некоректное время, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
     
 
@@ -388,20 +402,20 @@ async def change_day(message: types.message, state:FSMContext):
 @rasp_router.message(Command('change_train_day'))
 async def change_day(message: types.message, state:FSMContext):
     if not prov_in(message.from_user.id):
-        await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время')
+        await bot.send_message(message.from_user.id, 'У вас нет расписания чтобы изменить тренировку', reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'пришлите день недели на английском языке время которого вы хотите заменить')
+        await bot.send_message(message.from_user.id, 'Пришлите день недели на английском языке время которого вы хотите заменить')
         await state.set_state(chenge_rasp.daay)
 
 @rasp_router.message(chenge_rasp.daay)
 async def change_day(message: types.message, state:FSMContext):
     if prov_dayy(message.text):
         await state.update_data(daay = message.text)
-        await bot.send_message(message.from_user.id, 'пришлите расписание для этого дня')
+        await bot.send_message(message.from_user.id, 'Пришлите расписание для этого дня')
         await state.set_state(chenge_rasp.rasp)
     
     else:
-        await bot.send_message(message.from_user.id, 'вы прислали не правильное название дня недели')
+        await bot.send_message(message.from_user.id, 'Вы прислали не правильное название дня недели', reply_markup=kebn())
         await state.clear()
 
 
@@ -409,7 +423,7 @@ async def change_day(message: types.message, state:FSMContext):
 async def change_day(message: types.message, state:FSMContext):
 
     await state.update_data(rasp = message.text)
-    await bot.send_message(message.from_user.id, 'вы успешно заменили расписание')
+    await bot.send_message(message.from_user.id, 'Вы успешно заменили расписание', reply_markup=kebn())
     data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
     print(data)
     che_rasp_user(int(message.from_user.id),data['daay'],data['rasp'])

@@ -6,6 +6,7 @@ import os
 import sys
 from multiprocessing import Process
 import datetime
+from handlers.keybooards import kebad, kebn, kebv
 from fun_bd import dat_tren
 from handlers.user_router import user_router
 from handlers.rasp_router import rasp_router
