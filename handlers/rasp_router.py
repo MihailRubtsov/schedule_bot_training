@@ -171,7 +171,7 @@ async def help(message: types.Message):
 
 @rasp_router.message(Command("Wednesday"))
 async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Wednasday')
+    a = watc_sched_day(message.from_user.id, 'Wednesday')
     await bot.send_message(message.from_user.id, 'Ваша тренировка в среду')
     await bot.send_message(message.from_user.id, a, reply_markup= rep_keb_n())
 
