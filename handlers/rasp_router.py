@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from handlers.keybooards import rep_keb_n
 from handlers.keybooards import rep_keb_n
 from handlers.keybooards import key_day
-from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time, prov_time, prov_dayy, add_time_user
+from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time, prov_time, prov_dayy, add_time_user, che_rasp_user
 import os
 load_dotenv()
 
@@ -21,6 +21,10 @@ rasp_router = Router()
 class chenge_time(StatesGroup):
     daay = State()
     ttime = State()
+
+class chenge_rasp(StatesGroup):
+    daay = State()
+    rasp = State()
 
 
 
@@ -379,3 +383,35 @@ async def change_day(message: types.message, state:FSMContext):
         await bot.send_message(message.from_user.id, 'вы ввели некоректное время, повторите попытку заполнения расписания заново без ошибок')
         await state.clear()
     
+
+
+@rasp_router.message(Command('change_train_day'))
+async def change_day(message: types.message, state:FSMContext):
+    if not prov_in(message.from_user.id):
+        await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время')
+    else:
+        await bot.send_message(message.from_user.id, 'пришлите день недели на английском языке время которого вы хотите заменить')
+        await state.set_state(chenge_rasp.daay)
+
+@rasp_router.message(chenge_rasp.daay)
+async def change_day(message: types.message, state:FSMContext):
+    if prov_dayy(message.text):
+        await state.update_data(daay = message.text)
+        await bot.send_message(message.from_user.id, 'пришлите расписание для этого дня')
+        await state.set_state(chenge_rasp.rasp)
+    
+    else:
+        await bot.send_message(message.from_user.id, 'вы прислали не правильное название дня недели')
+        await state.clear()
+
+
+@rasp_router.message(chenge_rasp.rasp)
+async def change_day(message: types.message, state:FSMContext):
+
+    await state.update_data(rasp = message.text)
+    await bot.send_message(message.from_user.id, 'вы успешно заменили расписание')
+    data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
+    print(data)
+    che_rasp_user(int(message.from_user.id),data['daay'],data['rasp'])
+    await state.clear()
+

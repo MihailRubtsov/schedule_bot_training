@@ -103,3 +103,14 @@ def add_time_user(id, ddaay, ttiime):
             SET {}_t = ? 
             WHERE id_tel = ?
         """.format(ddaay), (ttiime, id))
+
+
+
+def che_rasp_user(id, ddaay, rasp):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute("""
+            UPDATE user_sched_2 
+            SET {} = ? 
+            WHERE id_tel = ?
+        """.format(ddaay), (rasp, id))
