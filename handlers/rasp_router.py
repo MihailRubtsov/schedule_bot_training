@@ -18,7 +18,6 @@ rasp_router = Router()
 class del_rasp(StatesGroup):
     del_ch = State()
 
-
 class chenge_time(StatesGroup):
     daay = State()
     ttime = State()
@@ -26,8 +25,6 @@ class chenge_time(StatesGroup):
 class chenge_rasp(StatesGroup):
     daay = State()
     rasp = State()
-
-
 
 class train_sched(StatesGroup):
     mon = State()

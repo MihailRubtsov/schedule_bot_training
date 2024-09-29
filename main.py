@@ -26,8 +26,6 @@ days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Sat
 async def schedule_otpr():
     while True:
         dday = int(datetime.date.today().weekday())
-
-
         a = str(datetime.datetime.now()).split(' ')[1].split(':')# время во время проверки
         chass = int(a[0])
         minu = int(a[1]) 
