@@ -32,6 +32,7 @@ async def schedule_otpr():
         chass = int(a[0])
         minu = int(a[1]) 
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
+        print(data)
         for i in data:
             print(i)
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
@@ -50,7 +51,7 @@ async def schedule_otpr():
                         print(minu)
                     except:
                         print('ошибка айди')
-        await asyncio.sleep(30)
+        await asyncio.sleep(50)
 
 
 

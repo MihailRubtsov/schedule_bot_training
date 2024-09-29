@@ -3,7 +3,7 @@ from aiogram.filters.command import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from dotenv import load_dotenv
-from handlers.keybooards import kebad, kebn, kebv, key_day
+from handlers.keybooards import kebad, kebn, kebv, key_day, key_day_e
 from fun_bd import add_sched, watc_sched, del_sched, prov_in, watc_sched_day, add_sched_time, prov_time, prov_dayy, add_time_user, che_rasp_user
 import os
 load_dotenv()
@@ -58,7 +58,7 @@ class train_sched_time(StatesGroup):
 
 #функция для добавления рассписания
 
-@rasp_router.message(Command('addschedule'))
+@rasp_router.message(Command('add_schedule'))
 async def addschedule(message: types.Message, state :FSMContext):
     if not prov_in(int(message.from_user.id)):
         await bot.send_message(message.from_user.id, 'Пришли твои тренировки в понедельник')
@@ -119,7 +119,7 @@ async def sun_tr(message: types.Message, state: FSMContext):
 
 
 # функция которая присылает все рассписание пользователю
-@rasp_router.message(Command("allschedule"))
+@rasp_router.message(Command("all_schedule"))
 async def help(message: types.Message):
     if prov_in(message.from_user.id) == True:
         a = watc_sched(message.from_user.id)
@@ -142,7 +142,7 @@ async def help(message: types.Message):
         await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание', reply_markup=kebn())
 
 #удаление рассписания
-@rasp_router.message(Command("delschedule"))
+@rasp_router.message(Command("del_schedule"))
 async def help(message: types.Message, state: FSMContext):
     if prov_in(message.from_user.id) == True:
         await bot.send_message(message.from_user.id, f'Вы точно хотите удалить расписание?')
@@ -233,7 +233,7 @@ async def help(message: types.Message):
 # добавление рассписания + время
 
 
-@rasp_router.message(Command('addscheduletime'))
+@rasp_router.message(Command('add_schedule_time'))
 async def addschedule_time(message: types.Message, state :FSMContext):
     if not prov_in(int(message.from_user.id)):
         await bot.send_message(message.from_user.id, 'Пришли твои тренировки в понедельник')
@@ -246,52 +246,52 @@ async def addschedule_time(message: types.Message, state :FSMContext):
 @rasp_router.message(train_sched_time.mon)
 async def mon_tr(message: types.Message, state: FSMContext):
     await state.update_data(mon = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки во вторник')
-    await state.set_state(train_sched_time.tue)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать в понедельник')
+    await state.set_state(train_sched_time.mon_t)
 
 @rasp_router.message(train_sched_time.tue)
 async def tue_tr(message: types.Message, state: FSMContext):
     await state.update_data(tue = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки в среду')
-    await state.set_state(train_sched_time.wed)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать во вторник')
+    await state.set_state(train_sched_time.tue_t)
 
 @rasp_router.message(train_sched_time.wed)
 async def wed_tr(message: types.Message, state: FSMContext):
     await state.update_data(wed = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки в четверг')
-    await state.set_state(train_sched_time.thu)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать в среду')
+    await state.set_state(train_sched_time.wed_t)
 
 @rasp_router.message(train_sched_time.thu)
 async def thu_tr(message: types.Message, state: FSMContext):
     await state.update_data(thu = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки в пятницу')
-    await state.set_state(train_sched_time.fri)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать в четверг')
+    await state.set_state(train_sched_time.thu_t)
 
 @rasp_router.message(train_sched_time.fri)
 async def fri_tr(message: types.Message, state: FSMContext):
     await state.update_data(fri = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки в субботу')
-    await state.set_state(train_sched_time.sat)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать в пятницу')
+    await state.set_state(train_sched_time.fri_t)
 
 @rasp_router.message(train_sched_time.sat)
 async def sat_tr(message: types.Message, state: FSMContext):
     await state.update_data(sat = message.text)
-    await bot.send_message(message.from_user.id, 'Пришли свои тренировки в воскресенье')
-    await state.set_state(train_sched_time.sun)
+    await bot.send_message(message.from_user.id, 'Пришли время во сколько напоминать в субботу')
+    await state.set_state(train_sched_time.sat_t)
 
 @rasp_router.message(train_sched_time.sun)
 async def sun_tr(message: types.Message, state: FSMContext):
     await state.update_data(sun = message.text)
-    await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать в понедельник')
-    await state.set_state(train_sched_time.mon_t)
+    await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать в воскресенье')
+    await state.set_state(train_sched_time.sun_t)
 
 # уже начало заполнение времени
 @rasp_router.message(train_sched_time.mon_t)
 async def mon_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(mon_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать во вторник')
-        await state.set_state(train_sched_time.tue_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки во вторник')
+        await state.set_state(train_sched_time.tue)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для понедельника, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -300,8 +300,8 @@ async def mon_tr(message: types.Message, state: FSMContext):
 async def tue_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(tue_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать среду')
-        await state.set_state(train_sched_time.wed_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки в среду')
+        await state.set_state(train_sched_time.wed)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для вторника, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -310,8 +310,8 @@ async def tue_tr(message: types.Message, state: FSMContext):
 async def wed_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(wed_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать четверг')
-        await state.set_state(train_sched_time.thu_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки в четверг')
+        await state.set_state(train_sched_time.thu)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для среды, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -320,8 +320,8 @@ async def wed_tr(message: types.Message, state: FSMContext):
 async def thu_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(thu_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать пятницу')
-        await state.set_state(train_sched_time.fri_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки в пятницу')
+        await state.set_state(train_sched_time.fri)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для четверга, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -330,8 +330,8 @@ async def thu_tr(message: types.Message, state: FSMContext):
 async def fri_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(fri_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать субботу')
-        await state.set_state(train_sched_time.sat_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки в субботу')
+        await state.set_state(train_sched_time.sat)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для пятницы, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -340,8 +340,8 @@ async def fri_tr(message: types.Message, state: FSMContext):
 async def sat_tr(message: types.Message, state: FSMContext):
     if prov_time(message.text):
         await state.update_data(sat_t = message.text)
-        await bot.send_message(message.from_user.id, 'Во сколько времени вам напоминать воскресенье')
-        await state.set_state(train_sched_time.sun_t)
+        await bot.send_message(message.from_user.id, 'Пришли твои тренировки в воскресенье')
+        await state.set_state(train_sched_time.sun)
     else:
         await bot.send_message(message.from_user.id, 'Вы ввели некоректное время для субботы, повторите попытку заполнения расписания заново без ошибок', reply_markup=kebn())
         await state.clear()
@@ -369,14 +369,14 @@ async def add_time(message: types.Message, state: FSMContext):
     if not prov_in(message.from_user.id):
         await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы добавить или изменить время время', reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'Пришлите день недели на английском языке время которого вы хотите заменить')
+        await bot.send_message(message.from_user.id, 'Выберете день недели', reply_markup=key_day_e())
         await state.set_state(chenge_time.daay)
 
 @rasp_router.message(chenge_time.daay)
 async def change_day(message: types.message, state:FSMContext):
     if prov_dayy(message.text):
         await state.update_data(daay = message.text)
-        await bot.send_message(message.from_user.id, 'Пришлите время для этого дня')
+        await bot.send_message(message.from_user.id, 'Пришлите время для этого дня', reply_markup=kebn())
         await state.set_state(chenge_time.ttime)
     
     else:
@@ -399,23 +399,23 @@ async def change_day(message: types.message, state:FSMContext):
     
 
 
-@rasp_router.message(Command('change_train_day'))
+@rasp_router.message(Command('change_train'))
 async def change_day(message: types.message, state:FSMContext):
     if not prov_in(message.from_user.id):
         await bot.send_message(message.from_user.id, 'У вас нет расписания чтобы изменить тренировку', reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'Пришлите день недели на английском языке время которого вы хотите заменить')
+        await bot.send_message(message.from_user.id, 'Выберете день недели', reply_markup=key_day_e())
         await state.set_state(chenge_rasp.daay)
 
 @rasp_router.message(chenge_rasp.daay)
 async def change_day(message: types.message, state:FSMContext):
     if prov_dayy(message.text):
         await state.update_data(daay = message.text)
-        await bot.send_message(message.from_user.id, 'Пришлите расписание для этого дня')
+        await bot.send_message(message.from_user.id, 'Пришлите расписание для этого дня', reply_markup=kebn())
         await state.set_state(chenge_rasp.rasp)
     
     else:
-        await bot.send_message(message.from_user.id, 'Вы прислали не правильное название дня недели', reply_markup=kebn())
+        await bot.send_message(message.from_user.id, 'Вы прислали неправильное название дня недели', reply_markup=kebn())
         await state.clear()
 
 
