@@ -9,6 +9,7 @@ import datetime
 from handlers.keybooards import kebad, kebn, kebv
 from fun_bd import dat_tren
 from handlers.user_router import user_router
+from fun_bd import ism_na_nul, obnul
 from handlers.rasp_router import rasp_router
 load_dotenv()
 
@@ -25,31 +26,43 @@ days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Sat
 # настройка автоматического отправления рассписания
 async def schedule_otpr():
     while True:
-        dday = int(datetime.date.today().weekday())
+        dday = int(datetime.date.today().weekday()) # порядковый номер дня недели для отправки
         a = str(datetime.datetime.now()).split(' ')[1].split(':')# время во время проверки
-        chass = int(a[0])
-        minu = int(a[1]) 
+        chass = int(a[0]) # часы
+        minu = int(a[1]) #минуты
+
+        if chass == 0 and minu == 0:
+            obnul() # обнуление каждый день в 0:0
+        
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
-        print(data)
+        
         for i in data:
-            print(i)
+        
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
-                chass1 = int(i[-1][:2])
+                chass1 = int(i[-1][:2]) # часы и минуты для конкретного человека
                 minu1 = int(i[-1][3:])
-                if chass1 == chass and minu1 == minu:
+        
+                if chass1 == chass and minu1 == minu: # проверка совпадения вермени для отправки
+        
                     try:
                         await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                        ism_na_nul(str(i[0])) # изменяем проверку чтобы второй раз случайно не отправить
                         print(minu)
+        
                     except:
                         print('ошибка айди')
+        
             else: # если нет конкретного времени то отправление только в 10 часов утра
+        
                 if chass == 10 and minu == 0:
+        
                     try:
                         await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                        ism_na_nul(str(i[0])) # проверка чтобы второй раз не отправить
                         print(minu)
+        
                     except:
                         print('ошибка айди')
-        await asyncio.sleep(50)
 
 
 

@@ -18,9 +18,9 @@ def add_sched_time(id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat,
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute("""
-            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Monday_t, Tuesday_t, Wednesday_t, Thursday_t, Friday_t, Saturday_t, Sunday_t)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat, sut))
+            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Monday_t, Tuesday_t, Wednesday_t, Thursday_t, Friday_t, Saturday_t, Sunday_t, prov)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat, sut, 1))
 
 
 
@@ -28,7 +28,7 @@ def add_sched_time(id, mo, tu, we, th, fr, sa, su, mot, tut, wet, tht, frt, sat,
 def dat_tren(day, day_t):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute(f"""SELECT id_tel, {day}, {day_t} FROM user_sched_2""")
+        cur.execute(f"""SELECT id_tel, {day}, {day_t} FROM user_sched_2 WHERE prov == 1""")
         res = cur.fetchall()
         return res
 
@@ -114,3 +114,16 @@ def che_rasp_user(id, ddaay, rasp):
             SET {} = ? 
             WHERE id_tel = ?
         """.format(ddaay), (rasp, id))
+    
+
+def obnul():
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""UPDATE user_sched_2 SET prov = 1""")
+
+def ism_na_nul(id_p):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""UPDATE user_sched_2 SET prov = 0 WHERE id_tel = {id_p}""")
+
+
