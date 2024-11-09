@@ -120,7 +120,8 @@ async def sun_tr(message: types.Message, state: FSMContext):
 async def help(message: types.Message):
     if prov_in(message.from_user.id) == True:
         a = watc_sched(message.from_user.id)
-        await bot.send_message(message.from_user.id, f"""Вот твое расписание:
+        await bot.send_message(message.from_user.id, f"""Вот твое расписание!
+
 Понедельник:
 {a[2]}
 
