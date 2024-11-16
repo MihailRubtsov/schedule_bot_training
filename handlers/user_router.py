@@ -14,7 +14,7 @@ user_router = Router()
 async def command_start(message:types.Message):
     await bot.send_message(message.from_user.id, f"""Начало работы бота помошника. 
 Этот бот будет напоминать тебе о твоих тренировках каждый день. 
-Но для началf надо заполнить твой план тренировок для корhектной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
+Но для начала надо заполнить твой план тренировок для коректной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
     with open('all_id.txt', 'w') as file:
         file.write(str(message.from_user.id)+',')
 
