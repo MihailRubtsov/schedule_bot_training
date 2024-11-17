@@ -37,32 +37,16 @@ async def schedule_otpr():
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
         
         for i in data:
-        
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
                 chass1 = int(i[-1][:2]) # часы и минуты для конкретного человека
                 minu1 = int(i[-1][3:])
-        
                 if chass1 == chass and minu1 == minu: # проверка совпадения вермени для отправки
-        
-                    try:
-                        await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
-                        ism_na_nul(str(i[0])) # изменяем проверку чтобы второй раз случайно не отправить
-                        print(minu)
-        
-                    except:
-                        print('ошибка айди')
-        
+                    await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                    ism_na_nul(str(i[0])) # изменяем проверку чтобы второй раз случайно не отправить
             else: # если нет конкретного времени то отправление только в 10 часов утра
-        
                 if chass == 10 and minu == 0:
-        
-                    try:
-                        await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
-                        ism_na_nul(str(i[0])) # проверка чтобы второй раз не отправить
-                        print(minu)
-        
-                    except:
-                        print('ошибка айди')
+                    await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
+                    ism_na_nul(str(i[0])) # проверка чтобы второй раз не отправить
         await asyncio.sleep(1)
 
 
