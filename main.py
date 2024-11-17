@@ -63,6 +63,7 @@ async def schedule_otpr():
         
                     except:
                         print('ошибка айди')
+        await asyncio.sleep(1)
 
 
 
