@@ -171,7 +171,6 @@ async def help(message: types.Message, state: FSMContext):
 #вызывает клавиатуру с днями недели или говорит что не рассписания
 @rasp_router.message(Command("schedule"))
 async def help(message: types.Message):
-    print(5)
     if prov_in(message.from_user.id):
         await bot.send_message(message.from_user.id, 'Выберите день недели', reply_markup= key_day())
     else:
