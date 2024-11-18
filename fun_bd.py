@@ -7,9 +7,9 @@ def add_sched(id, mo, tu, we, th, fr, sa, su):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute("""
-            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (id, mo, tu, we, th, fr, sa, su))
+            INSERT INTO user_sched_2 (id_tel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, prov)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (id, mo, tu, we, th, fr, sa, su, 1))
 
 
 # добавление в БД с временем отправки в каждый день
