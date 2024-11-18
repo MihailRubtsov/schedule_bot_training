@@ -1,12 +1,10 @@
 import asyncio, logging
-from aiogram import Bot, Dispatcher, types, Router
-from aiogram.filters.command import Command
+from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 import os
 import sys
 from multiprocessing import Process
 import datetime
-from handlers.keybooards import kebad, kebn, kebv
 from fun_bd import dat_tren
 from handlers.user_router import user_router
 from fun_bd import ism_na_nul, obnul
@@ -30,16 +28,15 @@ async def schedule_otpr():
         a = str(datetime.datetime.now()).split(' ')[1].split(':')# время во время проверки
         chass = int(a[0]) # часы
         minu = int(a[1]) #минуты
-
+        #await bot.send_message('1120554354', f'{dday, chass, minu}')
         if chass == 0 and minu == 0:
             obnul() # обнуление каждый день в 0:0
-        
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
-        
         for i in data:
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
-                chass1 = int(i[-1][:2]) # часы и минуты для конкретного человека
-                minu1 = int(i[-1][3:])
+                vr = i[-1].split(':')
+                chass1 = int(vr[0]) # часы и минуты для конкретного человека
+                minu1 = int(vr[1])
                 if chass1 == chass and minu1 == minu: # проверка совпадения вермени для отправки
                     await bot.send_message(str(i[0]), f'Вот ваш сегодняшний план тренировок:\n{str(i[1])}')
                     ism_na_nul(str(i[0])) # изменяем проверку чтобы второй раз случайно не отправить

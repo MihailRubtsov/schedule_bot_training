@@ -356,7 +356,7 @@ async def sun_tr(message: types.Message, state: FSMContext):
         await state.update_data(sun_t = message.text)
         await bot.send_message(message.from_user.id, 'Вы закончили заполнение расписания', reply_markup=kebn())
         data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
-        print(data)
+        
         add_sched_time(int(message.from_user.id),data['mon'],data['tue'],data['wed'],data['thu'],data['fri'],data['sat'],data['sun'],data['mon_t'],data['tue_t'],data['wed_t'],data['thu_t'],data['fri_t'],data['sat_t'],data['sun_t'])
         await state.clear()
     else:
@@ -393,7 +393,7 @@ async def change_day(message: types.message, state:FSMContext):
         await state.update_data(ttime = message.text)
         await bot.send_message(message.from_user.id, 'Вы успешно заменили время', reply_markup=kebn())
         data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
-        print(data)
+        
         add_time_user(int(message.from_user.id),data['daay'],data['ttime'])
         await state.clear()
     else:
@@ -428,7 +428,7 @@ async def change_day(message: types.message, state:FSMContext):
     await state.update_data(rasp = message.text)
     await bot.send_message(message.from_user.id, 'Вы успешно заменили расписание', reply_markup=kebn())
     data = await state.get_data() # получение всех данных которые ввел пользователь и послудующее добавление в базу данных
-    print(data)
+    
     che_rasp_user(int(message.from_user.id),data['daay'],data['rasp'])
     await state.clear()
 
