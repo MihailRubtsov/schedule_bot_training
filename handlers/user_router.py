@@ -2,6 +2,7 @@ from aiogram import Bot, types, Dispatcher, Router
 from aiogram.filters.command import Command
 from handlers.keybooards import kebad, kebn, kebv, key_day
 from dotenv import load_dotenv
+from fun_bd import obnul
 import os
 load_dotenv()
 
@@ -27,6 +28,10 @@ async def command_start(message:types.Message):
         prooooov = False
     else:
         prooooov = True
+
+@user_router.message(Command("ooobnul"))
+async def command_start(message:types.Message):
+    obnul()
 
 
 @user_router.message(Command("help"))

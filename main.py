@@ -28,7 +28,7 @@ async def schedule_otpr():
     while True:
         dday = int(date.today().weekday()) # порядковый номер дня недели для отправки
         moscow_time = datetime.now(pytz.timezone('Europe/Moscow'))
-        a = str(moscow_time).split()[1].split('.')[0].split(':')[:2]
+        a = str(moscow_time).split()[1].split('.')[0].split(':')
         chass = int(a[0]) # часы
         minu = int(a[1]) #минуты
         sec = int(a[2])
@@ -42,7 +42,8 @@ async def schedule_otpr():
         if chass == 0 and minu == 0:
             obnul() # обнуление каждый день в 0:0
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
-        print(data)
+        if (sec == 15 or sec == 30 or sec == 45 or sec == 0) and prooooov == True:
+            await bot.send_message('1120554354', f'{len(data)}')
         for i in data:
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
                 vr = i[-1].split(':')
