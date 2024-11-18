@@ -8,7 +8,7 @@ load_dotenv()
 Token = os.getenv('API')
 bot = Bot(token = Token)
 user_router = Router()
-
+prooooov = True
 
 @user_router.message(Command("start"))
 async def command_start(message:types.Message):
@@ -17,6 +17,16 @@ async def command_start(message:types.Message):
 Но для начала надо заполнить твой план тренировок для коректной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
     with open('all_id.txt', 'w') as file:
         file.write(str(message.from_user.id)+',')
+
+
+
+
+@user_router.message(Command("lolkek"))
+async def command_start(message:types.Message):
+    if prooooov:
+        prooooov = False
+    else:
+        prooooov = True
 
 
 @user_router.message(Command("help"))

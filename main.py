@@ -4,11 +4,13 @@ from dotenv import load_dotenv
 import os
 import sys
 from multiprocessing import Process
-import datetime
+from datetime import datetime, date
 from fun_bd import dat_tren
 from handlers.user_router import user_router
 from fun_bd import ism_na_nul, obnul
+import pytz
 from handlers.rasp_router import rasp_router
+from handlers.user_router import prooooov
 load_dotenv()
 
 Token = os.getenv('API')
@@ -24,14 +26,23 @@ days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Sat
 # настройка автоматического отправления рассписания
 async def schedule_otpr():
     while True:
-        dday = int(datetime.date.today().weekday()) # порядковый номер дня недели для отправки
-        a = str(datetime.datetime.now()).split(' ')[1].split(':')# время во время проверки
+        dday = int(date.today().weekday()) # порядковый номер дня недели для отправки
+        moscow_time = datetime.now(pytz.timezone('Europe/Moscow'))
+        a = str(moscow_time).split()[1].split('.')[0].split(':')[:2]
         chass = int(a[0]) # часы
         minu = int(a[1]) #минуты
-        #await bot.send_message('1120554354', f'{dday, chass, minu}')
+        sec = int(a[2])
+        if chass <= 3:
+            if dday == 6:
+                dday = 0
+            else:
+                dday += 1
+        if (sec == 15 or sec == 30 or sec == 45 or sec == 0) and prooooov == True:
+            await bot.send_message('1120554354', f'{dday, chass, minu}')
         if chass == 0 and minu == 0:
             obnul() # обнуление каждый день в 0:0
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
+        print(data)
         for i in data:
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
                 vr = i[-1].split(':')

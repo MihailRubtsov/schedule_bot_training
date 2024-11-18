@@ -1,6 +1,8 @@
-from fun_bd import obnul, ism_na_nul
+from datetime import datetime
+import pytz     #   pip install pytz
 
-# ism_na_nul('1120554354')
-print(5)
+moscow_time = datetime.now(pytz.timezone('Europe/Moscow'))
+a = str(moscow_time).split()[1].split('.')[0].split(':')
 
-obnul()
+
+print(a)
