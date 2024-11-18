@@ -10,7 +10,6 @@ from handlers.user_router import user_router
 from fun_bd import ism_na_nul, obnul
 import pytz
 from handlers.rasp_router import rasp_router
-from handlers.user_router import prooooov
 load_dotenv()
 
 Token = os.getenv('API')
@@ -37,13 +36,13 @@ async def schedule_otpr():
                 dday = 0
             else:
                 dday += 1
-        if (sec == 15 or sec == 30 or sec == 45 or sec == 0) and prooooov == True:
-            await bot.send_message('1120554354', f'{dday, chass, minu}')
+        #if (sec == 15 or sec == 30 or sec == 45 or sec == 0):
+        #    await bot.send_message('1120554354', f'{dday, chass, minu}')
         if chass == 0 and minu == 0:
             obnul() # обнуление каждый день в 0:0
         data = dat_tren(days[dday], days_t[dday]) # получание информации по конкретному дню
-        if (sec == 15 or sec == 30 or sec == 45 or sec == 0) and prooooov == True:
-            await bot.send_message('1120554354', f'{len(data)}')
+        #if (sec == 15 or sec == 30 or sec == 45 or sec == 0):
+        #    await bot.send_message('1120554354', f'{len(data)}')
         for i in data:
             if i[-1] != None: # если есть конкретное время на этот день тогда выполняется код
                 vr = i[-1].split(':')

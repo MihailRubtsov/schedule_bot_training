@@ -9,7 +9,7 @@ load_dotenv()
 Token = os.getenv('API')
 bot = Bot(token = Token)
 user_router = Router()
-prooooov = True
+
 
 @user_router.message(Command("start"))
 async def command_start(message:types.Message):
@@ -22,12 +22,7 @@ async def command_start(message:types.Message):
 
 
 
-@user_router.message(Command("lolkek"))
-async def command_start(message:types.Message):
-    if prooooov:
-        prooooov = False
-    else:
-        prooooov = True
+
 
 @user_router.message(Command("ooobnul"))
 async def command_start(message:types.Message):
