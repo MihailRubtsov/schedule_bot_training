@@ -10,6 +10,7 @@ from handlers.user_router import user_router
 from fun_bd import ism_na_nul, obnul
 import pytz
 from handlers.rasp_router import rasp_router
+from handlers.admin_router import admin_router
 load_dotenv()
 
 Token = os.getenv('API')
@@ -17,6 +18,7 @@ Token = os.getenv('API')
 bot = Bot(token=Token)             
 dp = Dispatcher()
 dp.include_router(user_router)
+dp.include_router(admin_router)
 dp.include_router(rasp_router)
 
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
