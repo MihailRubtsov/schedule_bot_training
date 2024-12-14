@@ -1,8 +1,7 @@
-import asyncio, logging
+import asyncio
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 import os
-import sys
 from multiprocessing import Process
 from datetime import datetime, date
 from fun_bd import dat_tren
@@ -74,5 +73,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
