@@ -95,6 +95,7 @@ def prov_dayy(mess):
     
 
 
+#добавление времени пользователю
 def add_time_user(id, ddaay, ttiime):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
@@ -105,7 +106,7 @@ def add_time_user(id, ddaay, ttiime):
         """.format(ddaay), (ttiime, id))
 
 
-
+#замена рассписания пользователю
 def che_rasp_user(id, ddaay, rasp):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
@@ -116,11 +117,14 @@ def che_rasp_user(id, ddaay, rasp):
         """.format(ddaay), (rasp, id))
     
 
+# команда админа позволяет у всех пользователей поменять значение было отправлено расписание или нет
 def obnul():
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute(f"""UPDATE user_sched_2 SET prov = 1""")
 
+
+# команда которая ровно в 00:00 обнуляет всем проверку
 def ism_na_nul(id_p):
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
