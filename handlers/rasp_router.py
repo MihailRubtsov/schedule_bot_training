@@ -433,7 +433,36 @@ async def change_day(message: types.message, state:FSMContext):
     await state.clear()
 
 
-#функция которая добавляет рассписание по файлу
+# #функция которая добавляет рассписание по файлу
 @rasp_router.message(Command('add_schedule_file'))
 async def addschedule(message: types.Message, state :FSMContext):
-    await bot.send_message(message.from_user.id, 'пока в разработке')
+    if prov_in(message.from_user.id):
+        await bot.send_message(message.from_user.id, 'у вас уже есть рассписание', reply_markup=kebn())
+    else:
+        await bot.send_message(message.from_user.id, 'пришли мне свой файл')
+        await state.set_state(file_rasp.fileee)
+
+
+@rasp_router.message(file_rasp.fileee)
+async def addschedule(message: types.Message, state :FSMContext):
+    if message.document:
+        file_id = message.document.file_id
+        file_name = f'{message.from_user.id}' + f'{message.from_user.id}' + '.txt'
+        file_path = os.path.join(os.getcwd(), file_name)  # Сохраняем файл в текущую директорию
+        # Скачиваем файл
+        file = await bot.get_file(file_id)
+        await bot.download_file(file.file_path, file_path)
+        with open(file_name) as file:
+            f = file.readlines()
+        stro = ''.join(f[1:])
+        stro = stro.replace('\n', '@')
+        stro = stro[:-2]
+        stro = stro[7:]
+        spis = ['Monday(',')@Tuesday(',')@Wednesday(',')@Thursday(',')@Friday(',')@Saturday(',')@Sunday(']
+        for i in spis:
+            stro = stro.replace(i, '#')
+        spis_rasp = stro.split('#')
+        add_sched(int(message.from_user.id),spis_rasp[0],spis_rasp[1],spis_rasp[2],spis_rasp[3],spis_rasp[4],spis_rasp[5],spis_rasp[6])
+        await bot.send_message(message.from_user.id, 'Ваше рассписание успешно добавленно', reply_markup=kebn())
+        os.remove(file_name)
+    

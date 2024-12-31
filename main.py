@@ -39,7 +39,6 @@ async def schedule_otpr():
 
         data = dat_tren(days[dday], days_t[dday]) # Получение информации по конкретному дню
         print(data)
-        print(moscow_time)
 
         for i in data:
             if i[-1] is not None:  # Если есть конкретное время на этот день
