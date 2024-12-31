@@ -4,6 +4,7 @@ from handlers.keybooards import kebad, kebn, kebv, key_day
 from dotenv import load_dotenv
 from fun_bd import obnul
 import os
+from aiogram.types import FSInputFile
 load_dotenv()
 
 Token = os.getenv('API')
@@ -42,7 +43,10 @@ async def help(message: types.Message):
 1) /all_schedule бот присылает полный тренировочный план
 2) /del_schedule вы можете удалить расписание и заполнить занаво
 3) /schedule перед вами появится клавиатура с днями неделями и вы модете узнать что вы делаете в конкретный день
-скоро будет добавленна функция автоматического отправления рассписания""", reply_markup=kebn())
+скоро будет добавленна функция автоматического отправления рассписания
+
+3. /Template присылает вам файл-шаблон в который вы можете написать свои тренировки и отравить боту. Он вставит их в бд без использования других функций.
+Вставляйте ваши тренировки строго в скобочки, иначе будет ошибка.""", reply_markup=kebn())
 
 
 @user_router.message(Command("work_schedule"))
@@ -59,8 +63,24 @@ async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Назад""", reply_markup=kebn())
 
 
+@user_router.message(Command("Template"))
+async def template(message: types.Message):
+    # Указываем путь к файлу
+    file_path = 'template.txt'
+    
+    # Создаем объект FSInputFile
+    document = FSInputFile(file_path)
+    
+    # Отправляем документ пользователю
+    await bot.send_document(message.from_user.id, document)
 
 
+
+
+@user_router.message(Command("salaaaaaaaam"))
+async def help(message: types.Message):
+    sall = FSInputFile('salamchik.jpg')
+    await bot.send_photo(message.from_user.id, sall)
 
 
 

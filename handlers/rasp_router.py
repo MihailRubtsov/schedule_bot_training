@@ -18,6 +18,10 @@ rasp_router = Router()
 class del_rasp(StatesGroup):
     del_ch = State()
 
+
+class file_rasp(StatesGroup):
+    fileee = State()
+
 class chenge_time(StatesGroup):
     daay = State()
     ttime = State()
@@ -432,3 +436,6 @@ async def change_day(message: types.message, state:FSMContext):
     che_rasp_user(int(message.from_user.id),data['daay'],data['rasp'])
     await state.clear()
 
+@rasp_router.message(Command('add_schedule_file'))
+async def addschedule(message: types.Message, state :FSMContext):
+    await bot.send_message(message.from_user.id, 'пока в разработке')

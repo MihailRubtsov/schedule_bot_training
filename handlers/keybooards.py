@@ -27,7 +27,7 @@ def kebn():
 
 
 def kebad():
-    butto = [[types.KeyboardButton(text='/add_schedule'),types.KeyboardButton(text='/add_schedule_time')],[ types.KeyboardButton(text='/time_change'), types.KeyboardButton(text='/change_train')],[types.KeyboardButton(text='/back')]]
+    butto = [[types.KeyboardButton(text='/add_schedule'),types.KeyboardButton(text='/add_schedule_file'),types.KeyboardButton(text='/add_schedule_time')],[ types.KeyboardButton(text='/time_change'), types.KeyboardButton(text='/change_train')],[types.KeyboardButton(text='/back')]]
     return types.ReplyKeyboardMarkup(keyboard=butto, resize_keyboard=True)
 
 def kebv():
