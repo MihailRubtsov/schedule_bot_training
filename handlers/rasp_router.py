@@ -445,24 +445,27 @@ async def addschedule(message: types.Message, state :FSMContext):
 
 @rasp_router.message(file_rasp.fileee)
 async def addschedule(message: types.Message, state :FSMContext):
-    if message.document:
-        file_id = message.document.file_id
-        file_name = f'{message.from_user.id}' + f'{message.from_user.id}' + '.txt'
-        file_path = os.path.join(os.getcwd(), file_name)  # Сохраняем файл в текущую директорию
+    try:
+        if message.document:
+            file_id = message.document.file_id
+            file_name = f'{message.from_user.id}' + f'{message.from_user.id}' + '.txt'
+            file_path = os.path.join(os.getcwd(), file_name)  # Сохраняем файл в текущую директорию
         # Скачиваем файл
-        file = await bot.get_file(file_id)
-        await bot.download_file(file.file_path, file_path)
-        with open(file_name) as file:
-            f = file.readlines()
-        stro = ''.join(f[1:])
-        stro = stro.replace('\n', '@')
-        stro = stro[:-2]
-        stro = stro[7:]
-        spis = ['Monday(',')@Tuesday(',')@Wednesday(',')@Thursday(',')@Friday(',')@Saturday(',')@Sunday(']
-        for i in spis:
-            stro = stro.replace(i, '#')
-        spis_rasp = stro.split('#')
-        add_sched(int(message.from_user.id),spis_rasp[0],spis_rasp[1],spis_rasp[2],spis_rasp[3],spis_rasp[4],spis_rasp[5],spis_rasp[6])
-        await bot.send_message(message.from_user.id, 'Ваше рассписание успешно добавленно', reply_markup=kebn())
-        os.remove(file_name)
+            file = await bot.get_file(file_id)
+            await bot.download_file(file.file_path, file_path)
+            with open(file_name) as file:
+                f = file.readlines()
+            stro = ''.join(f[1:])
+            stro = stro.replace('\n', '@')
+            stro = stro[:-2]
+            stro = stro[7:]
+            spis = ['Monday(',')@Tuesday(',')@Wednesday(',')@Thursday(',')@Friday(',')@Saturday(',')@Sunday(']
+            for i in spis:
+                stro = stro.replace(i, '#')
+            spis_rasp = stro.split('#')
+            add_sched(int(message.from_user.id),spis_rasp[0],spis_rasp[1],spis_rasp[2],spis_rasp[3],spis_rasp[4],spis_rasp[5],spis_rasp[6])
+            await bot.send_message(message.from_user.id, 'Ваше рассписание успешно добавленно', reply_markup=kebn())
+            os.remove(file_name)
+    except:
+        await bot.send_message(message.from_user.id, 'вы отправили файл не txt разрешения или неправильно оформили файл')
     

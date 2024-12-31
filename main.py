@@ -38,7 +38,6 @@ async def schedule_otpr():
             obnul()  # Обнуление каждый день в 00:00
 
         data = dat_tren(days[dday], days_t[dday]) # Получение информации по конкретному дню
-        print(data)
 
         for i in data:
             if i[-1] is not None:  # Если есть конкретное время на этот день
