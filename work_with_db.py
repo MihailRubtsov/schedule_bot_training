@@ -2,8 +2,8 @@ import sqlite3 as sq
 with sq.connect('user_train1.db') as con:
    cur = con.cursor()
    cur.execute("""CREATE TABLE user_sched_2(user_id INTEGER PRIMARY KEY AUTOINCREMENT ,id_tel TEXT,
-                kol_ned TEXT,
-                nom_ned TEXT,
+                kol_ned INTEGER,
+                nom_ned INTEGER,
                 ned_1 TEXT,
                 ned_2 TEXT,
                 ned_3 TEXT,

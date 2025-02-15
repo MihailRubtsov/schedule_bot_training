@@ -4,6 +4,7 @@ from handlers.keybooards import kebad, kebn, kebv, key_day
 from dotenv import load_dotenv
 from fun_bd import obnul
 import os
+from fun_db_2 import *
 from aiogram.types import FSInputFile
 load_dotenv()
 
@@ -14,6 +15,8 @@ user_router = Router()
 
 @user_router.message(Command("start"))
 async def command_start(message:types.Message):
+    if prov_in(message.from_user.id) == False:
+        sozd_prof(message.from_user.id)
     await bot.send_message(message.from_user.id, f"""Начало работы бота помошника. 
 Этот бот будет напоминать тебе о твоих тренировках каждый день. 
 Но для начала надо заполнить твой план тренировок для коректной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
