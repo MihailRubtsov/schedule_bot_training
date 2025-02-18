@@ -3,7 +3,7 @@ from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 import os
 from datetime import datetime, date
-from fun_bd import dat_tren, ism_na_nul, obnul
+from fun_bd_2 import dat_tren, ism_na_nul, obnul
 import pytz
 from handlers.user_router import user_router
 from handlers.rasp_router import rasp_router

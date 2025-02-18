@@ -2,7 +2,7 @@ from aiogram import Bot, types, Dispatcher, Router
 from aiogram.filters.command import Command
 from handlers.keybooards import kebad, kebn, kebv, key_day
 from dotenv import load_dotenv
-from fun_bd import obnul
+from fun_bd_2 import obnul
 import os
 load_dotenv()
 

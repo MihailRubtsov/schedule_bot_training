@@ -1,9 +1,12 @@
-from fun_db_2 import *
+from fun_db import *
 
 
-sozd_prof(2)
+# sozd_prof(2)
+print(prov_in(2))
+print(kol_nedel(2))
 
-add_sched('2', 'training')
+# add_sched(2, 'выучить передний вис')
+add_time(2,1,1,1,1,1,1,1)
 
 # with open('template.txt') as file:
 #     f = file.readlines()
