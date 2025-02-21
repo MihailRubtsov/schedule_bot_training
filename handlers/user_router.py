@@ -4,7 +4,7 @@ from handlers.keybooards import kebad, kebn, kebv, key_day
 from dotenv import load_dotenv
 from fun_bd_2 import obnul
 import os
-from fun_db_2 import *
+from fun_db import *
 from aiogram.types import FSInputFile
 load_dotenv()
 

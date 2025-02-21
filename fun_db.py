@@ -2,8 +2,7 @@ import sqlite3 as sq
 import datetime
 
 
-#Функция добавление в БД
-def sozd_prof(idd):
+def sozd_prof(idd): # создает профиль пользователя
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute("""
@@ -12,7 +11,7 @@ def sozd_prof(idd):
         """, (idd,0, 1,2))
 
 
-def prov_in(id):
+def prov_in(id): # проверка есть ли пользователь
     pr = False
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
@@ -27,7 +26,7 @@ def prov_in(id):
 
 
 
-def kol_nedel(id):
+def kol_nedel(id): #количество недель пользователя
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute(f"""SELECT kol_ned FROM user_sched_2 WHERE id_tel == {str(id)}
@@ -36,7 +35,7 @@ def kol_nedel(id):
     return int(res[0][0])
 
 
-def nom_nedel(id):
+def nom_nedel(id): # присылает номер недели на которой сейчас пользователь
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute(f"""SELECT nom_ned FROM user_sched_2 WHERE id_tel == {str(id)}
@@ -52,7 +51,7 @@ def nom_nedel(id):
 
 
 
-def add_sched(idd, rasp):
+def add_sched(idd, rasp): # добавление недели
     kol = int(kol_nedel(idd))
     if kol < 5:
         with sq.connect('user_train1.db') as con:
@@ -72,17 +71,44 @@ def add_sched(idd, rasp):
         return 'Error'
 
 
-def add_time(idd, mot, tut, wet, tht, frt, sat, sut):
+def add_time_p(idd, mot, tut, wet, tht, frt, sat, sut): #добавление времени во сколько отправлять пользователю
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute(f"""
-            UPDATE user_sched_2 SET Monday_0 = ?, Tuesday_1 = ?, Wednesday_2 = ?, Thursday_3 = ?, Friday_4 = ?, Saturday_5 = ?, Sunday_6 = ? WHERE id_tel = {str(idd)}
+            UPDATE user_sched_2 SET Monday_t = ?, Tuesday_t = ?, Wednesday_t = ?, Thursday_t = ?, Friday_t = ?, Saturday_t = ?, Sunday_t = ? WHERE id_tel = {str(idd)}
         """, (mot, tut, wet, tht, frt, sat, sut))
 
 
+#  функция проверки времени у пользователя чтобы не было проблем при отправке
+def prov_time(time):
+    pr = True
+    try:
+        a = time.split(':')
+        h = int(a[0])
+        m = int(a[1])
+        if h < 0 or h > 24:
+            pr = False
+        if m < 0 or m > 60:
+            pr = False
+    except:
+        pr = False
+    return pr
 
 
 
+def add_time_user(id, ddaay, ttiime):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute("""
+            UPDATE user_sched_2 
+            SET {}_t = ? 
+            WHERE id_tel = ?
+        """.format(ddaay), (ttiime, id))
 
+
+def prov_dayy(mess):
+    dayss = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    if mess in dayss: return True
+    return False
 # добавление в БД с временем отправки в каждый день
 
