@@ -27,8 +27,8 @@ class chenge_time(StatesGroup):
     ttime = State()
 
 
-class time(StatesGroup):
-    pass
+class nedel(StatesGroup):
+    number = State()
 
 class chenge_rasp(StatesGroup):
     daay = State()
@@ -122,35 +122,14 @@ async def sun_tr(message: types.Message, state: FSMContext):
 async def help(message: types.Message):
     if prov_in(message.from_user.id) == True:
         a = watc_sched(message.from_user.id)
-        await bot.send_message(message.from_user.id, f"""Вот твое расписание!
-
-Понедельник:
-{a[2]}
-
-Вторник:
-{a[3]}
-
-Среда:
-{a[4]}
-
-Четверг:
-{a[5]}
-
-Пятница:
-{a[6]}
-
-Суббота:
-{a[7]}
-
-Воскресенье:
-{a[8]}""", reply_markup=kebn())
+        await bot.send_message(message.from_user.id, a, reply_markup=kebn())
     else:
         await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание.', reply_markup=kebn())
 
 #удаление рассписания
 @rasp_router.message(Command("del_schedule"))
 async def help(message: types.Message, state: FSMContext):
-    if prov_in(message.from_user.id) == True:
+    if True == True:
         await bot.send_message(message.from_user.id, f'Вы точно хотите удалить расписание? Для удаления напишите да или yes')
         await state.set_state(del_rasp.del_ch)
     else:
@@ -161,7 +140,7 @@ async def help(message: types.Message, state: FSMContext):
 async def help(message: types.Message, state: FSMContext):
     if message.text.lower() == 'да' or message.text.lower() == 'yes':
         del_sched(int(message.from_user.id))
-        await bot.send_message(message.from_user.id, f'Ваше рассписание успешно удалено', reply_markup=kebn())
+        await bot.send_message(message.from_user.id, f'Ваша последняя неделя удалена', reply_markup=kebn())
         await state.clear()
     else:
         await bot.send_message(message.from_user.id, 'Вы не подтвердили удаление', reply_markup=kebn())
@@ -232,7 +211,18 @@ async def help(message: types.Message):
 
 
 
+@rasp_router.message(Command("schedule_ned"))
+async def help(message: types.Message, state : FSMContext):
+    if prov_in(message.from_user.id):
+        await bot.send_message(message.from_user.id, f'Выберите номер недели, всего недель у вас {kol_nedel(message.from_user.id)}', reply_markup= key_day())
+        await state.set_state(nedel.number)
+    else:
+        await bot.send_message(message.from_user.id, 'Вы еще не добавили свое рассписание', reply_markup= kebn())
 
+
+@rasp_router.message(nedel.number)
+async def nedel_otpr(message: types.Message, state: FSMContext):
+    await bot.send_message(message.from_user.id, watch_ned(message.from_user.id, message.text))
 
 
 

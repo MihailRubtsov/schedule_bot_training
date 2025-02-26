@@ -112,3 +112,55 @@ def prov_dayy(mess):
     return False
 # добавление в БД с временем отправки в каждый день
 
+
+def del_sched(id): # удаление последней тренировки
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""DELETE FROM user_training WHERE id_tel = {id} AND nom_ned = {kol_nedel(id)}
+""")
+    with sq.connect('user_train1.db') as con:
+            cur = con.cursor()
+            cur.execute(f"""
+            UPDATE user_sched_2 
+            SET kol_ned= {kol_nedel(id) - 1}
+            WHERE id_tel = {id}
+        """)
+
+
+
+def watc_sched(id):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT * FROM user_sched_2 WHERE id_tel = {id}
+""")
+        res = cur.fetchone ()
+        return res
+
+
+
+
+def watc_sched(id):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT * FROM user_training WHERE id_tel = {id}
+""")
+        res = cur.fetchall()
+        soob = f'кол-во недель - {len(res)}.'
+
+        k = 1
+        for i in res:
+            dni = i[2].split('@#@')
+            mn = f'\n\n№{k}\n\nMonday:{dni[0]}\n\nTuesday:{dni[1]}\n\nWednesday:{dni[2]}\n\nThursday:{dni[3]}\n\nFriday:{dni[4]}\n\nSaturday:{dni[5]}\n\nSanday:{dni[6]}'
+            soob += mn
+            k +=1
+        return soob
+
+
+def watch_ned(id, nom):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT * FROM user_training WHERE id_tel = {id} AND nom_ned = {int(nom)}""")
+        res = cur.fetchone()
+        dni = res[2].split('@#@')
+        mn = f'Ваша тренировочная неделя.\nMonday:{dni[0]}\n\nTuesday:{dni[1]}\n\nWednesday:{dni[2]}\n\nThursday:{dni[3]}\n\nFriday:{dni[4]}\n\nSaturday:{dni[5]}\n\nSanday:{dni[6]}'
+        return mn
