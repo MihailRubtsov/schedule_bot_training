@@ -150,66 +150,6 @@ async def help(message: types.Message, state: FSMContext):
 
 
 
-#вызывает клавиатуру с днями недели или говорит что нет рассписания
-@rasp_router.message(Command("schedule"))
-async def help(message: types.Message):
-    if prov_in(message.from_user.id):
-        await bot.send_message(message.from_user.id, 'Выберите день недели', reply_markup= key_day())
-    else:
-        await bot.send_message(message.from_user.id, 'Вы еще не добавили свое рассписание', reply_markup= kebn())
-
-@rasp_router.message(Command("Monday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Monday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в понедельник')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-@rasp_router.message(Command("Tuesday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Tuesday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка во вторник')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-@rasp_router.message(Command("Wednesday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Wednesday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в среду')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-@rasp_router.message(Command("Thursday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Thursday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в четверг')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-@rasp_router.message(Command("Friday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Friday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в пятницу')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-@rasp_router.message(Command("Saturday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Saturday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в субботу')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-
-@rasp_router.message(Command("Sunday"))
-async def help(message: types.Message):
-    a = watc_sched_day(message.from_user.id, 'Sunday')
-    await bot.send_message(message.from_user.id, 'Ваша тренировка в воскресенье')
-    await bot.send_message(message.from_user.id, a, reply_markup= kebn())
-
-
-
-
-
 
 @rasp_router.message(Command("schedule_ned"))
 async def help(message: types.Message, state : FSMContext):

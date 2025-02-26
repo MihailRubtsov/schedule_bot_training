@@ -11,6 +11,22 @@ def sozd_prof(idd): # создает профиль пользователя
         """, (idd,0, 1,2))
 
 
+
+def prov_time(time):
+    pr = True
+    try:
+        a = time.split(':')
+        h = int(a[0])
+        m = int(a[1])
+        if h < 0 or h > 24:
+            pr = False
+        if m < 0 or m > 60:
+            pr = False
+    except:
+        pr = False
+    return pr
+
+
 def prov_in(id): # проверка есть ли пользователь
     pr = False
     with sq.connect('user_train1.db') as con:
@@ -80,31 +96,22 @@ def add_time_p(idd, mot, tut, wet, tht, frt, sat, sut): #добавление в
 
 
 #  функция проверки времени у пользователя чтобы не было проблем при отправке
-def prov_time(time):
-    pr = True
-    try:
-        a = time.split(':')
-        h = int(a[0])
-        m = int(a[1])
-        if h < 0 or h > 24:
-            pr = False
-        if m < 0 or m > 60:
-            pr = False
-    except:
-        pr = False
-    return pr
 
 
 
-def add_time_user(id, ddaay, ttiime):
+
+def add_time_user(id, ddaay, ttiime): #замена времени в конкретный день
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
-        cur.execute("""
-            UPDATE user_sched_2 
-            SET {}_t = ? 
-            WHERE id_tel = ?
-        """.format(ddaay), (ttiime, id))
+        cur.execute("""UPDATE user_sched_2 SET {}_t = ? WHERE id_tel = ? """.format(ddaay), (ttiime, id))
 
+
+
+#замена рассписания пользователю
+def che_rasp_user(id, ned, rasp):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute("""UPDATE user_training SET train = ? WHERE id_tel = ? AND nom_ned = {}""".format(ned), (rasp, id))
 
 def prov_dayy(mess):
     dayss = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
