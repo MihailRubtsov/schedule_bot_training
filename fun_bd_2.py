@@ -131,3 +131,5 @@ def ism_na_nul(id_p):
         cur.execute(f"""UPDATE user_sched_2 SET prov = 0 WHERE id_tel = {id_p}""")
 
 
+
+

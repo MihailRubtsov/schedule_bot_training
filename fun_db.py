@@ -1,14 +1,16 @@
 import sqlite3 as sq
-import datetime
+from datetime import datetime
 
+def day_now():
+    return datetime.weekday(datetime.now())
 
 def sozd_prof(idd): # создает профиль пользователя
     with sq.connect('user_train1.db') as con:
         cur = con.cursor()
         cur.execute("""
-            INSERT INTO user_sched_2 (id_tel, kol_ned, nom_ned, prov)
-            VALUES (?, ?, ?, ?)
-        """, (idd,0, 1,2))
+            INSERT INTO user_sched_2 (id_tel, kol_ned, nom_ned, Monday_t, Tuesday_t, Wednesday_t, Thursday_t, Friday_t, Saturday_t, Sunday_t, prov)
+            VALUES (?, ?, ?, ?, ?,?,?,?,?,?,?)
+        """, (idd,0, 1,'10:00','10:00','10:00','10:00','10:00','10:00','10:00',2))
 
 
 def prov_time(time):#проверка коректности времени
@@ -37,7 +39,14 @@ def kol_nedel(id): #количество недель пользователя
     except:
         return 0
 
-
+def update_kol_ned(id):
+    with sq.connect('user_train1.db') as con:
+            cur = con.cursor()
+            cur.execute(f"""
+            UPDATE user_training
+            SET kol_ned= {kol_nedel(id)}
+            WHERE id_tel = {id}
+        """)
 
 def prov_in(id): # проверка есть ли пользователь
     if kol_nedel(id) != 0:
@@ -52,7 +61,7 @@ def nom_nedel(id): # присылает номер недели на котор�
 """)
         res = cur.fetchall()
     
-    return res[0]
+    return int(res[0][0])
 
 
 def add_sched(idd, rasp): # добавление недели
@@ -107,12 +116,13 @@ def del_sched(id): # удаление последней тренировки
         cur.execute(f"""DELETE FROM user_training WHERE id_tel = {id} AND nom_ned = {kol_nedel(id)}
 """)
     with sq.connect('user_train1.db') as con:
-            cur = con.cursor()
-            cur.execute(f"""
+        cur = con.cursor()
+        cur.execute(f"""
             UPDATE user_sched_2 
             SET kol_ned= {kol_nedel(id) - 1}
             WHERE id_tel = {id}
         """)
+
 
 
 def watc_sched(id):
@@ -147,7 +157,7 @@ def watch_ned(id, nom):
         cur.execute(f"""SELECT * FROM user_training WHERE id_tel = {id} AND nom_ned = {int(nom)}""")
         res = cur.fetchone()
         dni = res[2].split('@#@')
-        mn = f'Ваша тренировочная неделя.\nMonday:{dni[0]}\n\nTuesday:{dni[1]}\n\nWednesday:{dni[2]}\n\nThursday:{dni[3]}\n\nFriday:{dni[4]}\n\nSaturday:{dni[5]}\n\nSanday:{dni[6]}'
+        mn = f'Ваша тренировочная неделя №{nom}.\nMonday:{dni[0]}\n\nTuesday:{dni[1]}\n\nWednesday:{dni[2]}\n\nThursday:{dni[3]}\n\nFriday:{dni[4]}\n\nSaturday:{dni[5]}\n\nSanday:{dni[6]}'
         return mn
 
 
@@ -166,3 +176,41 @@ def work_with_file(name):
     return raspis
 
 
+def get_data():
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT * FROM user_sched_2""")
+        res = cur.fetchall()
+        
+        return res
+    
+
+def obn_ned():
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute("""
+    UPDATE  user_sched_2
+    SET nom_ned = CASE
+        WHEN kol_ned = nom_ned THEN 1
+        ELSE nom_ned + 1
+    END;
+""")
+
+def obnul():
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""UPDATE user_sched_2 SET prov = 1""")
+
+def get_train_day(id, num, den):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""SELECT * FROM user_training WHERE id_tel = {id} AND nom_ned = {int(num)}""")
+        res = cur.fetchone()
+        dni = res[2].split('@#@')
+        return dni[den]
+
+def ism_na_nul(id_p):
+    with sq.connect('user_train1.db') as con:
+        cur = con.cursor()
+        cur.execute(f"""UPDATE user_sched_2 SET prov = 0 WHERE id_tel = {id_p}""")
+        
