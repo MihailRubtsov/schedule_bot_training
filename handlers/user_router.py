@@ -1,12 +1,13 @@
-from aiogram import Bot, types, Dispatcher, Router 
+from aiogram import Bot, types, Dispatcher, Router , F
 from aiogram.filters.command import Command
-from handlers.keybooards import kebad, kebn, kebv, key_day, key_day_e
+from handlers.keybooards import kebad, kebn, kebv
 from dotenv import load_dotenv
-from fun_bd import obnul
-from aiogram.fsm.state import State, StatesGroup
 import os
+from fun_db import *
 from aiogram.types import FSInputFile
+from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+from .nazv_kom import *
 load_dotenv()
 
 Token = os.getenv('API')
@@ -22,10 +23,15 @@ class CBGU(StatesGroup):
     act = State()
 
 
+class pokup(StatesGroup):
+    code = State()
+
 
 
 @user_router.message(Command("start"))
 async def command_start(message:types.Message):
+    if prov_in(message.from_user.id) == False:
+        sozd_prof(message.from_user.id)
     await bot.send_message(message.from_user.id, f"""Начало работы бота помошника. 
 Этот бот будет напоминать тебе о твоих тренировках каждый день. 
 Но для начала надо заполнить твой план тренировок для коректной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
@@ -46,16 +52,16 @@ async def command_start(message:types.Message):
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Главные команды бота:
 1. /work_schedule вызывает клавиатуру с функциями добавления и изменения расписания, она имеет в себе такие функции:
-1) /add_schedule вы можете добавить план тренировок
-2) /add_schedule_time вы можете добавить тренировки и время сразу
-3) /time_change вы можете или добавить или изменить время
-4) /change_train вы можете изменить тренировку в конкретный день
+1) /add_schedule добавление тренировочной недели
+2) /add_time добавление времени отправки напоминаний
+3) /time_change смена времени отправки напоминаний
+4) /change_train изменение тренировочной недели
+5) /del_schedule удаление последней тренировочной недели
+6) /add_schedule_file добавление недели с помощью файла
                            
-2. /watch_schedule вызывает клавиатуру для просмотра всего расписания а так же его удаления, она имеет в себе такие функции:
+2. /watch_schedule вызывает клавиатуру для просмотра всего расписания, она имеет в себе такие функции:
 1) /all_schedule бот присылает полный тренировочный план
-2) /del_schedule вы можете удалить расписание и заполнить заново
-3) /schedule перед вами появится клавиатура с днями неделями и вы модете узнать что вы делаете в конкретный день
-скоро будет добавленна функция автоматического отправления рассписания
+2) /schedule_ned просмотр конкретной тренировочной недели
 
 3. /Template присылает вам файл-шаблон в который вы можете написать свои тренировки и отравить боту. Он вставит их в бд без использования других функций.
 Вставляйте ваши тренировки строго в скобочки, иначе будет ошибка.""", reply_markup=kebn())
@@ -95,22 +101,21 @@ async def help(message: types.Message):
     await bot.send_photo(message.from_user.id, sall)
 
 
-# CBGU
 
-@user_router.message(Command('raschot'))
-async def change_day(message: types.message, state:FSMContext):
+@user_router.message(Command('raschot') or F.text.lower() == b_kallor)
+async def change_day1(message: types.Message, state:FSMContext):
     await bot.send_message(message.from_user.id, 'какой у вас пол 1 = м, 2 = ж', reply_markup=key_day_e())
     await state.set_state(CBGU.sex)
 
 @user_router.message(CBGU.sex)
-async def change_day(message: types.message, state:FSMContext):
+async def change_day2(message: types.Message, state:FSMContext):
 
     await state.update_data(sex = message.text)
     await bot.send_message(message.from_user.id, 'Пришлите ваш возраст', reply_markup=kebn())
     await state.set_state(CBGU.age)
 
 @user_router.message(CBGU.age)
-async def change_day(message: types.message, state:FSMContext):
+async def change_day3(message: types.Message, state:FSMContext):
 
     await state.update_data(age = message.text)
     await bot.send_message(message.from_user.id, 'Пришлите ваш рост', reply_markup=kebn())
@@ -118,7 +123,7 @@ async def change_day(message: types.message, state:FSMContext):
 
 
 @user_router.message(CBGU.hight)
-async def change_day(message: types.message, state:FSMContext):
+async def change_day4(message: types.Message, state:FSMContext):
 
     await state.update_data(hight = message.text)
     await bot.send_message(message.from_user.id, 'Пришлите ваш вес', reply_markup=kebn())
@@ -126,7 +131,7 @@ async def change_day(message: types.message, state:FSMContext):
 
 
 @user_router.message(CBGU.weight)
-async def change_day(message: types.message, state:FSMContext):
+async def change_day5(message: types.Message, state:FSMContext):
 
     await state.update_data(weight = message.text)
     await bot.send_message(message.from_user.id, """Пришлите вашу активность если
@@ -143,7 +148,7 @@ async def change_day(message: types.message, state:FSMContext):
 
 
 @user_router.message(CBGU.act)
-async def change_day(message: types.message, state:FSMContext):
+async def change_day6(message: types.Message, state:FSMContext):
     await state.update_data(act = message.text)
     data = await state.get_data()
 
@@ -169,4 +174,41 @@ async def change_day(message: types.message, state:FSMContext):
     await bot.send_message(message.from_user.id, f"Вот ваша суточная норма каллорий: {CHK}")
     await state.clear()
 
+
+
+
+@user_router.message(F.text.lower() == "купить тренировку")
+async def prov_tren(message: types.Message, state: FSMContext):
+    await bot.send_message(message.from_user.id, "Введите пароль для активации")
+    await state.set_state(pokup.code)
+
+
+@user_router.message(pokup.code)
+async def prov_tren1(message: types.Message, state:FSMContext):
+    print(message.text)
+    if str(message.text) == '1234':
+        with open('pay_idd.txt', 'w') as file:
+            file.write(str(message.from_user.id)+',')
+        await bot.send_message(message.from_user.id, 'Вы активировали тренировки')
+    await state.clear()
+
+
+
+
+@user_router.message(F.text.lower() == "платные тренировки")
+async def prov_tren(message: types.Message, state: FSMContext):
+    chel = []
+    with open("pay_idd.txt", "r", encoding="utf-8") as file:
+        line1 = file.readline()
+        chel = line1.split(',')
+    if str(message.from_user.id) in chel:
+        file_path = 'trenki.txt'
+    
+    # Создаем объект FSInputFile
+        document = FSInputFile(file_path)
+    
+    # Отправляем документ пользователю
+        await bot.send_document(message.from_user.id, document)
+    else:
+        await bot.send_message(message.from_user.id, "Вы не купили тренировки, идите нахуй")
 
