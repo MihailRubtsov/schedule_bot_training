@@ -19,7 +19,7 @@ def key_day_e():
 def kebn():
     butto = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help')],
              [types.KeyboardButton(text='/work_schedule')],[types.KeyboardButton(text='/watch_schedule')], 
-             [types.KeyboardButton(text='/Template')]]
+             [types.KeyboardButton(text='/Template')],[types.KeyboardButton(text='/raschot')],[types.KeyboardButton(text="/train")]]
     return types.ReplyKeyboardMarkup(keyboard=butto, resize_keyboard=True)
 
 
