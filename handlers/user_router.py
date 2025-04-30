@@ -28,7 +28,7 @@ class pokup(StatesGroup):
 
 
 # @user_router.message(Command("start") or F.text.lower() == b_start)
-@user_router.message(Command("start") or F.text.lower() == b_start)
+@user_router.message(Command("start"))
 async def command_start(message:types.Message):
     if prov_in(message.from_user.id) == False:
         sozd_prof(message.from_user.id)
@@ -47,8 +47,8 @@ async def command_start(message:types.Message):
 async def command_start(message:types.Message):
     obnul()
 
-# @user_router.message(Command("help") or F.text.lower() == b_help)
-@user_router.message(F.text.lower() == b_help)
+@user_router.message(Command("help"))
+# @user_router.message(F.text.lower() == b_help)
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Главные команды бота:
 1. /work_schedule вызывает клавиатуру с функциями добавления и изменения расписания, она имеет в себе такие функции:
@@ -67,23 +67,23 @@ async def help(message: types.Message):
 Вставляйте ваши тренировки строго в скобочки, иначе будет ошибка.""", reply_markup=kebn())
 
 
-# @user_router.message(Command("work_schedule") or F.text.lower() == b_change)
-@user_router.message(F.text.lower() == b_change)
+@user_router.message(Command("work_schedule"))
+# @user_router.message(F.text.lower() == b_change)
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Команды добавления и изменения расписания""", reply_markup=kebad())
 
-# @user_router.message(Command("watch_schedule") or F.text.lower() == b_watch)
-@user_router.message(F.text.lower() == b_watch)
+@user_router.message(Command("watch_schedule"))
+# @user_router.message(F.text.lower() == b_watch)
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Команды просмотра расписания""", reply_markup=kebv())
 
-# @user_router.message(Command("back") or F.text.lower() == b_back)
-@user_router.message(F.text.lower() == b_back)
+@user_router.message(Command("back"))
+# @user_router.message(F.text.lower() == b_back)
 async def help(message: types.Message):
     await bot.send_message(message.from_user.id, """Назад""", reply_markup=kebn())
 
-# @user_router.message(Command("Template") or F.text.lower() == b_template)
-@user_router.message(F.text.lower() == b_template)
+@user_router.message(Command("Template"))
+# @user_router.message(F.text.lower() == b_template)
 async def template(message: types.Message):
     # Указываем путь к файлу
     file_path = 'template.txt'
@@ -103,8 +103,8 @@ async def help(message: types.Message):
     await bot.send_photo(message.from_user.id, sall)
 
 
-# @user_router.message(Command('raschot') or F.text.lower() == b_kallor)
-@user_router.message(F.text.lower() == b_kallor)
+@user_router.message(Command('raschot'))
+# @user_router.message(F.text.lower() == b_kallor)
 async def change_day1(message: types.Message, state:FSMContext):
     await bot.send_message(message.from_user.id, 'какой у вас пол 1 = м, 2 = ж', reply_markup=kebn())
     await state.set_state(CBGU.sex)
@@ -179,7 +179,7 @@ async def change_day6(message: types.Message, state:FSMContext):
 
 
 
-@user_router.message(F.text.lower() == "купить тренировку")
+@user_router.message(Command("buy_train"))
 async def prov_tren(message: types.Message, state: FSMContext):
     await bot.send_message(message.from_user.id, "Введите пароль для активации")
     await state.set_state(pokup.code)
@@ -197,7 +197,7 @@ async def prov_tren1(message: types.Message, state:FSMContext):
 
 
 
-@user_router.message(F.text.lower() == "платные тренировки")
+@user_router.message(Command("train"))
 async def prov_tren(message: types.Message, state: FSMContext):
     chel = []
     with open("pay_idd.txt", "r", encoding="utf-8") as file:

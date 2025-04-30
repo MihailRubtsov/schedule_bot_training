@@ -59,8 +59,8 @@ class train_sched_time(StatesGroup):
 
 
 #функция для добавления рассписания без времени
-# @rasp_router.message(Command('add_schedule') or F.text.lower() == b_sched_add)
-@rasp_router.message(F.text.lower() == b_sched_add)
+@rasp_router.message(Command('add_schedule'))
+# @rasp_router.message(F.text.lower() == b_sched_add)
 async def addschedule(message: types.Message, state :FSMContext):
     if int(kol_nedel(message.from_user.id)) <5:
         await bot.send_message(message.from_user.id, 'Пришли свои тренировки в понедельник')
@@ -119,8 +119,8 @@ async def sun_tr(message: types.Message, state: FSMContext):
 
 
 # функция которая присылает все рассписание пользователю
-# @rasp_router.message(Command("all_schedule") or F.text.lower() == b_all_sched)
-@rasp_router.message(F.text.lower() == b_all_sched)
+@rasp_router.message(Command("all_schedule"))
+# @rasp_router.message(F.text.lower() == b_all_sched)
 async def help(message: types.Message):
     if kol_nedel(message.from_user.id) != 0:
         a = watc_sched(message.from_user.id)
@@ -129,8 +129,8 @@ async def help(message: types.Message):
         await bot.send_message(message.from_user.id, 'Вы еще не добавляли расписание.', reply_markup=kebn())
 
 #удаление последней недели
-# @rasp_router.message(Command("del_schedule") or F.text.lower() == b_del_week)
-@rasp_router.message(F.text.lower() == b_del_week)
+@rasp_router.message(Command("del_schedule"))
+# @rasp_router.message(F.text.lower() == b_del_week)
 async def help(message: types.Message, state: FSMContext):
     if kol_nedel(message.from_user.id) != 0:
         await bot.send_message(message.from_user.id, f'Вы точно хотите удалить расписание? Вы удалите только последнюю неделю. Для удаления напишите да или yes')
@@ -154,8 +154,8 @@ async def help(message: types.Message, state: FSMContext):
 
 
 # просмотр конкретной недели рассписания
-# @rasp_router.message(Command("schedule_ned") or F.text.lower() == b_sched_ned) 
-@rasp_router.message(F.text.lower() == b_sched_ned) 
+@rasp_router.message(Command("schedule_ned")) 
+# @rasp_router.message(F.text.lower() == b_sched_ned) 
 async def help(message: types.Message, state : FSMContext):
     if kol_nedel(message.from_user.id) != 0:
         await bot.send_message(message.from_user.id, f'Пришлите номер недели, которую вы хотите посмотреть. Всего недель у вас {kol_nedel(message.from_user.id)}', reply_markup= kebn())
@@ -180,8 +180,8 @@ async def nedel_otpr(message: types.Message, state: FSMContext):
 
 
 # добавление времени отправки
-# @rasp_router.message(Command('add_time') or F.text.lower() == b_time_add)
-@rasp_router.message(F.text.lower() == b_time_add)
+@rasp_router.message(Command('add_time'))
+# @rasp_router.message(F.text.lower() == b_time_add)
 async def addschedule_time(message: types.Message, state :FSMContext):
     await bot.send_message(message.from_user.id, 'Пришли время отправки в понедельник')
     await state.set_state(train_sched_time.mon_t)
@@ -263,8 +263,8 @@ async def sun_tr(message: types.Message, state: FSMContext):
 
 
 # функция по добавлению времени на конкретный день , а так же замене времени в конкретный день
-# @rasp_router.message(Command("time_change") or F.text.lower() == b_time_change)
-@rasp_router.message(F.text.lower() == b_time_change)
+@rasp_router.message(Command("time_change"))
+# @rasp_router.message(F.text.lower() == b_time_change)
 async def add_time(message: types.Message, state: FSMContext):
     if kol_nedel(message.from_user.id) == 0:
         await bot.send_message(message.from_user.id, 'у вас нет расписания чтобы изменить время время', reply_markup=kebn())
@@ -299,8 +299,8 @@ async def change_day(message: types.message, state:FSMContext):
 
 
 # Функция которая позволяет заменить тренировку в конкретный день
-# @rasp_router.message(Command('change_train') or F.text.lower() == b_change_train)
-@rasp_router.message(F.text.lower() == b_change_train)
+@rasp_router.message(Command('change_train'))
+# @rasp_router.message(F.text.lower() == b_change_train)
 async def change_day(message: types.message, state:FSMContext):
     if kol_nedel(message.from_user.id) == 0:
         await bot.send_message(message.from_user.id, 'У вас нет расписания чтобы изменить тренировку', reply_markup=kebn())
@@ -346,8 +346,8 @@ async def change_day(message: types.message, state:FSMContext):
 
 
 # #функция которая добавляет рассписание по файлу
-# @rasp_router.message(Command('add_schedule_file') or F.text.lower() == b_add_file)
-@rasp_router.message(F.text.lower() == b_add_file)
+@rasp_router.message(Command('add_schedule_file'))
+# @rasp_router.message(F.text.lower() == b_add_file)
 async def addschedule(message: types.Message, state :FSMContext):
     if int(kol_nedel(message.from_user.id)) == 5:
         await bot.send_message(message.from_user.id, 'у вас достигнут лимит в 5 недель', reply_markup=kebn())
