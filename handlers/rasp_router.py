@@ -352,7 +352,7 @@ async def addschedule(message: types.Message, state :FSMContext):
     if int(kol_nedel(message.from_user.id)) == 5:
         await bot.send_message(message.from_user.id, 'у вас достигнут лимит в 5 недель', reply_markup=kebn())
     else:
-        await bot.send_message(message.from_user.id, 'пришли мне свой файл')
+        await bot.send_message(message.from_user.id, 'пришлите мне свой файл')
         await state.set_state(file_rasp.fileee)
 
 
@@ -373,7 +373,7 @@ async def addschedule(message: types.Message, state :FSMContext):
 
                 add_sched(int(message.from_user.id),raspis)
 
-                await bot.send_message(message.from_user.id, 'Ваше рассписание успешно добавленно', reply_markup=kebn())
+                await bot.send_message(message.from_user.id, 'Ваше расписание успешно добавленно', reply_markup=kebn())
 
                 os.remove(file_name)
             except:
