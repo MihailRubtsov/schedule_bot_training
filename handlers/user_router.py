@@ -32,7 +32,7 @@ class pokup(StatesGroup):
 async def command_start(message:types.Message):
     if prov_in(message.from_user.id) == False:
         sozd_prof(message.from_user.id)
-    await bot.send_message(message.from_user.id, f"""Начало работы бота помошника. 
+    await bot.send_message(message.from_user.id, f"""Начало работы бота помощника. 
 Этот бот будет напоминать тебе о твоих тренировках каждый день. 
 Но для начала надо заполнить твой план тренировок для коректной работы. Нажми /help чтобы у знать о командах бота""", reply_markup=kebn())
     with open('all_id.txt', 'w') as file:
@@ -155,10 +155,10 @@ async def change_day6(message: types.Message, state:FSMContext):
     data = await state.get_data()
 
     BMR = 0
-    if int(data['sex']) == 1:
+    if data['sex'].lower() == 'м':
         BMR = (10 * int(data['weight'])) + (6.25 * int(data['hight'])) - (5 * int(data['age'])) + 5
 
-    elif data['sex'] ==2:
+    elif data['sex'].lower() == 'ж':
         BMR = (10 * int(data['weight'])) + (6.25 * int(data['hight'])) - (5 * int(data['age'])) - 161
     
     CHK = 0
@@ -173,7 +173,7 @@ async def change_day6(message: types.Message, state:FSMContext):
     elif int(data['act']) == 5:
         CHK = BMR * 1.9
     
-    await bot.send_message(message.from_user.id, f"Вот ваша суточная норма каллорий: {CHK}")
+    await bot.send_message(message.from_user.id, f"Вот ваша суточная норма калорий: {CHK}")
     await state.clear()
 
 
@@ -212,5 +212,24 @@ async def prov_tren(message: types.Message, state: FSMContext):
     # Отправляем документ пользователю
         await bot.send_document(message.from_user.id, document)
     else:
-        await bot.send_message(message.from_user.id, "Вы не купили тренировки, идите нахуй")
+        await bot.send_message(message.from_user.id, "Вы не купили тренировки")
 
+
+
+
+@user_router.message(Command("team"))
+async def prov_tren(message: types.Message, state: FSMContext):
+    textt = """Наша команда:
+1) Михаил Рубцов - программист
+2) Тепляков Кирилл - дизайнер интерфейса
+3) Видюдин Арсений - team leader
+4) Архипов Александр - тестировщик"""
+    await bot.send_message(message.from_user.id, textt)
+    
+
+
+@user_router.message(Command("donat"))
+async def prov_tren(message: types.Message, state: FSMContext):
+    textt = """Если хотите поддержать то присылайте  деньги сюда:
+2343 2343 3242 2343"""
+    await bot.send_message(message.from_user.id, textt)
