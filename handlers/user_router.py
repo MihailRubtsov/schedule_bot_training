@@ -187,7 +187,6 @@ async def prov_tren(message: types.Message, state: FSMContext):
 
 @user_router.message(pokup.code)
 async def prov_tren1(message: types.Message, state:FSMContext):
-    print(message.text)
     if str(message.text) == '1234':
         with open('pay_idd.txt', 'w') as file:
             file.write(str(message.from_user.id)+',')
