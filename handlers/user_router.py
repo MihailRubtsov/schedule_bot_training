@@ -106,7 +106,7 @@ async def help(message: types.Message):
 @user_router.message(Command('raschot'))
 # @user_router.message(F.text.lower() == b_kallor)
 async def change_day1(message: types.Message, state:FSMContext):
-    await bot.send_message(message.from_user.id, 'какой у вас пол 1 = м, 2 = ж', reply_markup=kebn())
+    await bot.send_message(message.from_user.id, 'Какой у вас пол 1 = м, 2 = ж', reply_markup=kebn())
     await state.set_state(CBGU.sex)
 
 @user_router.message(CBGU.sex)
