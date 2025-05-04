@@ -221,7 +221,7 @@ async def prov_tren(message: types.Message, state: FSMContext):
     textt = """Наша команда:
 1) Михаил Рубцов - программист
 2) Тепляков Кирилл - дизайнер интерфейса
-3) Видюдин Арсений - team leader
+3) Видюлин Арсений - team leader
 4) Архипов Александр - тестировщик"""
     await bot.send_message(message.from_user.id, textt)
     
