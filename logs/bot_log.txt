@@ -1,0 +1,24 @@
+2025-08-13 17:03:06,831 INFO [aiogram.dispatcher] Start polling
+2025-08-13 17:03:06,900 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-08-13 17:03:09,868 INFO [aiogram.event] Update id=318848053 is handled. Duration 505 ms by bot id=5822159229
+2025-08-13 17:03:11,751 INFO [aiogram.event] Update id=318848054 is handled. Duration 153 ms by bot id=5822159229
+2025-08-13 17:03:15,099 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-08-13 17:03:15,100 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-08-13 17:03:15,100 INFO [aiogram.dispatcher] Polling stopped
+2025-08-13 17:03:15,640 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x76a55d57bfb0>
+2025-08-13 17:03:15,640 ERROR [asyncio] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x76a55d350710>, 9147.514631334)]']
+connector: <aiohttp.connector.TCPConnector object at 0x76a55d2c1c10>
+2025-08-14 23:26:40,777 INFO [aiogram.dispatcher] Start polling
+2025-08-14 23:26:40,840 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-08-14 23:26:50,789 INFO [aiogram.event] Update id=318848055 is handled. Duration 413 ms by bot id=5822159229
+2025-08-14 23:26:52,504 INFO [aiogram.event] Update id=318848056 is handled. Duration 182 ms by bot id=5822159229
+2025-08-14 23:27:00,810 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-08-14 23:27:00,811 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-08-14 23:27:00,811 INFO [aiogram.dispatcher] Polling stopped
+2025-08-14 23:27:01,313 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fdd8048c890>
+2025-08-14 23:27:01,313 ERROR [asyncio] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7fdd80f20590>, 2868.424269287)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7fdd80eff680>
