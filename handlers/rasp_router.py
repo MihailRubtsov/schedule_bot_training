@@ -5,8 +5,10 @@ from aiogram.fsm.state import State, StatesGroup
 from dotenv import load_dotenv
 from handlers.keybooards import kebad, kebn, kebv, key_day_e
 from fun_db import *
+from aiogram.types import FSInputFile
 from .nazv_kom import *
 import os
+import shutil
 load_dotenv()
 
 Token = os.getenv('API')
@@ -374,6 +376,7 @@ async def addschedule(message: types.Message, state :FSMContext):
                 add_sched(int(message.from_user.id),raspis)
 
                 await bot.send_message(message.from_user.id, 'Ваше расписание успешно добавленно', reply_markup=kebn())
+                shutil.copy(file_name, 'filiki')
 
                 os.remove(file_name)
             except:
@@ -381,3 +384,18 @@ async def addschedule(message: types.Message, state :FSMContext):
                 os.remove(file_name)
     except:
         await bot.send_message(message.from_user.id, 'вы отправили файл не txt разрешения или неправильно оформили файл')
+    
+
+
+
+
+# отправляет пользователю его файл с рассписанием
+@rasp_router.message(Command('file_back'))
+# @rasp_router.message(F.text.lower() == b_add_file)
+async def fileback(message: types.Message, state :FSMContext):
+    try:
+        file_name = f'{message.from_user.id}' + f'{message.from_user.id}' + '.txt'
+        document = FSInputFile(f'filiki/{message.from_user.id}{message.from_user.id}.txt')
+        await bot.send_document(chat_id=message.from_user.id, document=document)
+    except:
+        await bot.send_message(message.from_user.id, 'не получилось отправить')

@@ -4,10 +4,10 @@ from .nazv_kom import *
 
 # две клавиатуры которые имеются у пользователя
 
-def rep_keb_n():
-    buttons = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help'), types.KeyboardButton(text='/addschedule'),types.KeyboardButton(text='/schedule')],
-               [types.KeyboardButton(text='/allschedule'),types.KeyboardButton(text='/delschedule'), types.KeyboardButton(text='/addscheduletime'), types.KeyboardButton(text='/time_change')]]
-    return types.ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+# def rep_keb_n():
+#     buttons = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help'), types.KeyboardButton(text='/addschedule'),types.KeyboardButton(text='/schedule')],
+#                [types.KeyboardButton(text='/allschedule'),types.KeyboardButton(text='/delschedule'), types.KeyboardButton(text='/addscheduletime'), types.KeyboardButton(text='/time_change')]]
+#     return types.ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
 
 def key_day_e():
@@ -18,8 +18,7 @@ def key_day_e():
 
 def kebn():
     butto = [[types.KeyboardButton(text = '/start'), types.KeyboardButton(text='/help')],
-             [types.KeyboardButton(text='/work_schedule')],[types.KeyboardButton(text='/watch_schedule')], 
-             [types.KeyboardButton(text='/Template')],[types.KeyboardButton(text='/raschot')],[types.KeyboardButton(text="/train")]]
+             [types.KeyboardButton(text='/work_schedule')],[types.KeyboardButton(text='/watch_schedule')],[types.KeyboardButton(text='/raschot')]]
     return types.ReplyKeyboardMarkup(keyboard=butto, resize_keyboard=True)
 
 
