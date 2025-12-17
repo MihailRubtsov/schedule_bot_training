@@ -395,7 +395,7 @@ async def addschedule(message: types.Message, state :FSMContext):
 async def fileback(message: types.Message, state :FSMContext):
     try:
         file_name = f'{message.from_user.id}' + f'{message.from_user.id}' + '.txt'
-        document = FSInputFile(f'filiki/{message.from_user.id}{message.from_user.id}.txt')
+        document = FSInputFile(f'filiki/{message.from_user.id}{message.from_user.id}.txt', filename='Your_document')
         await bot.send_document(chat_id=message.from_user.id, document=document)
     except:
         await bot.send_message(message.from_user.id, 'не получилось отправить')

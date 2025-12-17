@@ -171,3 +171,11 @@ client_session: <aiohttp.client.ClientSession object at 0x78dfc3e2db80>
 2025-12-16 22:38:51,553 ERROR [asyncio] Unclosed connector
 connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x78dfc3e34890>, 23116.045664194)]']
 connector: <aiohttp.connector.TCPConnector object at 0x78dfc4381820>
+2025-12-17 11:09:22,110 INFO [aiogram.dispatcher] Start polling
+2025-12-17 11:09:22,164 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 11:09:30,466 INFO [aiogram.event] Update id=318848380 is handled. Duration 279 ms by bot id=5822159229
+2025-12-17 11:09:54,905 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 11:09:54,906 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 11:09:54,906 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 11:09:55,281 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x76b32cd31d00>
