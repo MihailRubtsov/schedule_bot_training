@@ -27,6 +27,10 @@ class pokup(StatesGroup):
     code = State()
 
 
+class train(StatesGroup):
+    number = State()
+
+
 # @user_router.message(Command("start") or F.text.lower() == b_start)
 @user_router.message(Command("start"))
 async def command_start(message:types.Message):
@@ -179,56 +183,59 @@ async def change_day6(message: types.Message, state:FSMContext):
 
 
 
-@user_router.message(Command("buy_train"))
-async def prov_tren(message: types.Message, state: FSMContext):
-    await bot.send_message(message.from_user.id, "Введите пароль для активации")
-    await state.set_state(pokup.code)
+    # @user_router.message(Command("buy_train"))
+    # async def prov_tren(message: types.Message, state: FSMContext):
+    #     await bot.send_message(message.from_user.id, "Введите пароль для активации")
+    #     await state.set_state(pokup.code)
 
 
-@user_router.message(pokup.code)
-async def prov_tren1(message: types.Message, state:FSMContext):
-    if str(message.text) == '1234':
-        with open('pay_idd.txt', 'w') as file:
-            file.write(str(message.from_user.id)+',')
-        await bot.send_message(message.from_user.id, 'Вы активировали тренировки')
-    await state.clear()
+    # @user_router.message(pokup.code)
+    # async def prov_tren1(message: types.Message, state:FSMContext):
+    #     if str(message.text) == '1234':
+    #         with open('pay_idd.txt', 'w') as file:
+    #             file.write(str(message.from_user.id)+',')
+    #         await bot.send_message(message.from_user.id, 'Вы активировали тренировки')
+    #     await state.clear()
 
 
 
 
-@user_router.message(Command("train"))
-async def prov_tren(message: types.Message, state: FSMContext):
-    chel = []
-    with open("pay_idd.txt", "r", encoding="utf-8") as file:
-        line1 = file.readline()
-        chel = line1.split(',')
-    if str(message.from_user.id) in chel:
-        file_path = 'trenki.txt'
+# @user_router.message(Command("train"))
+# async def prov_tren(message: types.Message, state: FSMContext):
+#     chel = []
+#     with open("pay_idd.txt", "r", encoding="utf-8") as file:
+#         line1 = file.readline()
+#         chel = line1.split(',')
+#     if str(message.from_user.id) in chel:
+#         file_path = 'trenki.txt'
     
-    # Создаем объект FSInputFile
-        document = FSInputFile(file_path)
+#     # Создаем объект FSInputFile
+#         document = FSInputFile(file_path)
     
-    # Отправляем документ пользователю
-        await bot.send_document(message.from_user.id, document)
-    else:
-        await bot.send_message(message.from_user.id, "Вы не купили тренировки")
+#     # Отправляем документ пользователю
+#         await bot.send_document(message.from_user.id, document)
+#     else:
+#         await bot.send_message(message.from_user.id, "Вы не купили тренировки")
 
 
 
 
-@user_router.message(Command("team"))
-async def prov_tren(message: types.Message, state: FSMContext):
-    textt = """Наша команда:
-1) Михаил Рубцов - программист
-2) Тепляков Кирилл - дизайнер интерфейса
-3) Видюлин Арсений - team leader
-4) Архипов Александр - тестировщик"""
-    await bot.send_message(message.from_user.id, textt)
     
 
 
-@user_router.message(Command("donat"))
-async def prov_tren(message: types.Message, state: FSMContext):
-    textt = """Если хотите поддержать то присылайте  деньги сюда:
-2343 2343 3242 2343"""
-    await bot.send_message(message.from_user.id, textt)
+# @user_router.message(Command("donat"))
+# async def prov_tren(message: types.Message, state: FSMContext):
+#     textt = """Если хотите поддержать то присылайте  деньги сюда:
+# 2343 2343 3242 2343"""
+#     await bot.send_message(message.from_user.id, textt)
+
+
+@user_router.message(Command("Exercise"))
+async def give_inst(message: types.Message, state: FSMContext):
+    await bot.send_message(message.from_user.id, 'Пришлите мне номер упражнения, инструкцию на которое вы хотите получить')
+    await state.set_state(train.number)
+
+
+@user_router.message(train.number)
+async def give_instru(message: types.Message, state:FSMContext):
+    await bot.send_message(message.from_user.id, 'пока не работает')

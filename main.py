@@ -38,12 +38,14 @@ days_t = ['Monday_t', 'Tuesday_t', 'Wednesday_t', 'Thursday_t', 'Friday_t', 'Sat
 
 
 async def schedule_tick():
-    """Один проход проверки времени и отправки сообщений"""
+    # print(5)
     pr = True
     dday = day_now()
-    moscow_time = datetime.now(pytz.timezone('Europe/Moscow'))
+    moscow_time = datetime.now(pytz.timezone('Europe/Vienna'))
     chass = moscow_time.hour
     minu = moscow_time.minute
+    # print(chass, minu)
+    # await bot.send_message('1120554354', f'time {chass} {minu}')
 
     if chass <= 3:
         dday = 0 if dday == 6 else dday + 1
@@ -101,12 +103,13 @@ async def schedule_runner():
             logger.info("Перезапуск фоновой задачи (прошло 2 дня)")
             start_time = datetime.now()  # сбрасываем время
             break
+        # await bot.send_message('1120554354', 'работы цикла')
 
         await asyncio.sleep(10)
 
 
 async def schedule_manager():
-    """Менеджер, который перезапускает schedule_runner каждые 2 дня"""
+    """Менеджер, который перезапускает schedule_runner каждые 2 дня, чтобы не ломалось"""
     while True:
         await schedule_runner()
 

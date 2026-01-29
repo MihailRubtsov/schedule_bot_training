@@ -1,181 +1,232 @@
-2025-08-13 17:03:06,831 INFO [aiogram.dispatcher] Start polling
-2025-08-13 17:03:06,900 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-08-13 17:03:09,868 INFO [aiogram.event] Update id=318848053 is handled. Duration 505 ms by bot id=5822159229
-2025-08-13 17:03:11,751 INFO [aiogram.event] Update id=318848054 is handled. Duration 153 ms by bot id=5822159229
-2025-08-13 17:03:15,099 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-08-13 17:03:15,100 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-08-13 17:03:15,100 INFO [aiogram.dispatcher] Polling stopped
-2025-08-13 17:03:15,640 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x76a55d57bfb0>
-2025-08-13 17:03:15,640 ERROR [asyncio] Unclosed connector
-connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x76a55d350710>, 9147.514631334)]']
-connector: <aiohttp.connector.TCPConnector object at 0x76a55d2c1c10>
-2025-08-14 23:26:40,777 INFO [aiogram.dispatcher] Start polling
-2025-08-14 23:26:40,840 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-08-14 23:26:50,789 INFO [aiogram.event] Update id=318848055 is handled. Duration 413 ms by bot id=5822159229
-2025-08-14 23:26:52,504 INFO [aiogram.event] Update id=318848056 is handled. Duration 182 ms by bot id=5822159229
-2025-08-14 23:27:00,810 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-08-14 23:27:00,811 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-08-14 23:27:00,811 INFO [aiogram.dispatcher] Polling stopped
-2025-08-14 23:27:01,313 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x7fdd8048c890>
-2025-08-14 23:27:01,313 ERROR [asyncio] Unclosed connector
-connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7fdd80f20590>, 2868.424269287)]']
-connector: <aiohttp.connector.TCPConnector object at 0x7fdd80eff680>
-2025-12-16 20:22:51,271 INFO [aiogram.dispatcher] Start polling
-2025-12-16 20:22:51,339 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:23:02,347 INFO [aiogram.event] Update id=318848317 is handled. Duration 376 ms by bot id=5822159229
-2025-12-16 20:23:09,339 INFO [aiogram.event] Update id=318848318 is handled. Duration 74 ms by bot id=5822159229
-2025-12-16 20:23:11,110 INFO [aiogram.event] Update id=318848319 is handled. Duration 107 ms by bot id=5822159229
-2025-12-16 20:23:13,893 INFO [aiogram.event] Update id=318848320 is handled. Duration 321 ms by bot id=5822159229
-2025-12-16 20:23:14,840 INFO [aiogram.event] Update id=318848321 is handled. Duration 64 ms by bot id=5822159229
-2025-12-16 20:23:16,517 INFO [aiogram.event] Update id=318848322 is handled. Duration 205 ms by bot id=5822159229
-2025-12-16 20:23:49,186 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 20:23:49,186 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:23:49,186 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 20:23:49,586 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x72c9953a7620>
-2025-12-16 20:23:49,586 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x72c992e06360>
-2025-12-16 20:33:10,215 INFO [aiogram.dispatcher] Start polling
-2025-12-16 20:33:10,280 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:33:12,999 INFO [aiogram.event] Update id=318848323 is handled. Duration 895 ms by bot id=5822159229
-2025-12-16 20:33:13,704 INFO [aiogram.event] Update id=318848324 is handled. Duration 99 ms by bot id=5822159229
-2025-12-16 20:33:21,813 INFO [aiogram.event] Update id=318848325 is handled. Duration 436 ms by bot id=5822159229
-2025-12-16 20:33:45,267 INFO [aiogram.event] Update id=318848326 is handled. Duration 668 ms by bot id=5822159229
-2025-12-16 20:35:20,032 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 20:35:20,034 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:35:20,035 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 20:35:20,545 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x75a605c888c0>
-2025-12-16 20:35:25,625 INFO [aiogram.dispatcher] Start polling
-2025-12-16 20:35:25,687 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:35:29,862 INFO [aiogram.event] Update id=318848328 is handled. Duration 329 ms by bot id=5822159229
-2025-12-16 20:35:32,966 INFO [aiogram.event] Update id=318848329 is handled. Duration 165 ms by bot id=5822159229
-2025-12-16 20:35:44,439 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 20:35:44,440 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 20:35:44,440 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 20:35:44,981 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x72f3e75a4a70>
-2025-12-16 20:35:44,982 ERROR [asyncio] Unclosed connector
-connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x72f3e80347d0>, 15721.971433551)]']
-connector: <aiohttp.connector.TCPConnector object at 0x72f3e8334860>
-2025-12-16 22:24:45,640 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:24:45,957 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:24:51,133 INFO [aiogram.event] Update id=318848330 is handled. Duration 685 ms by bot id=5822159229
-2025-12-16 22:24:53,683 INFO [aiogram.event] Update id=318848331 is handled. Duration 357 ms by bot id=5822159229
-2025-12-16 22:24:56,240 INFO [aiogram.event] Update id=318848332 is handled. Duration 72 ms by bot id=5822159229
-2025-12-16 22:24:57,389 INFO [aiogram.event] Update id=318848333 is handled. Duration 98 ms by bot id=5822159229
-2025-12-16 22:24:59,935 INFO [aiogram.event] Update id=318848334 is handled. Duration 703 ms by bot id=5822159229
-2025-12-16 22:25:02,715 INFO [aiogram.event] Update id=318848335 is handled. Duration 83 ms by bot id=5822159229
-2025-12-16 22:25:05,875 INFO [aiogram.event] Update id=318848336 is handled. Duration 185 ms by bot id=5822159229
-2025-12-16 22:25:08,645 INFO [aiogram.event] Update id=318848337 is handled. Duration 86 ms by bot id=5822159229
-2025-12-16 22:25:12,658 INFO [aiogram.event] Update id=318848338 is handled. Duration 67 ms by bot id=5822159229
-2025-12-16 22:25:13,770 INFO [aiogram.event] Update id=318848339 is handled. Duration 95 ms by bot id=5822159229
-2025-12-16 22:26:06,568 INFO [aiogram.event] Update id=318848340 is handled. Duration 462 ms by bot id=5822159229
-2025-12-16 22:26:11,775 INFO [aiogram.event] Update id=318848341 is handled. Duration 164 ms by bot id=5822159229
-2025-12-16 22:26:19,475 INFO [aiogram.event] Update id=318848342 is handled. Duration 259 ms by bot id=5822159229
-2025-12-16 22:27:55,466 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:27:55,467 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:27:55,467 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:27:55,987 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x76431e6d09e0>
-2025-12-16 22:27:55,987 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x76431e5ddd30>
-2025-12-16 22:28:02,779 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:28:02,842 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:28:06,009 INFO [aiogram.event] Update id=318848343 is handled. Duration 791 ms by bot id=5822159229
-2025-12-16 22:28:11,031 INFO [aiogram.event] Update id=318848344 is handled. Duration 1204 ms by bot id=5822159229
-2025-12-16 22:28:13,973 INFO [aiogram.event] Update id=318848345 is handled. Duration 176 ms by bot id=5822159229
-2025-12-16 22:28:21,372 INFO [aiogram.event] Update id=318848346 is handled. Duration 1964 ms by bot id=5822159229
-2025-12-16 22:28:47,849 INFO [aiogram.event] Update id=318848347 is handled. Duration 7 ms by bot id=5822159229
-2025-12-16 22:29:38,697 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:29:38,697 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:29:38,698 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:29:39,224 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x769a2f77c980>
-2025-12-16 22:30:20,245 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:30:20,312 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:30:21,870 INFO [aiogram.event] Update id=318848348 is handled. Duration 418 ms by bot id=5822159229
-2025-12-16 22:30:23,115 INFO [aiogram.event] Update id=318848349 is handled. Duration 140 ms by bot id=5822159229
-2025-12-16 22:30:24,029 ERROR [aiogram.dispatcher] Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 104] Connection reset by peer
-2025-12-16 22:30:24,030 WARNING [aiogram.dispatcher] Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 5822159229)
-2025-12-16 22:30:25,349 INFO [aiogram.dispatcher] Connection established (tryings = 1, bot id = 5822159229)
-2025-12-16 22:30:25,423 INFO [aiogram.event] Update id=318848350 is handled. Duration 73 ms by bot id=5822159229
-2025-12-16 22:30:29,706 INFO [aiogram.event] Update id=318848351 is handled. Duration 432 ms by bot id=5822159229
-2025-12-16 22:30:44,748 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:30:44,749 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:30:44,749 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:30:45,274 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x7dadd60b8aa0>
-2025-12-16 22:30:45,274 ERROR [asyncio] Unclosed connector
-connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7dadd6b407d0>, 22618.711619324)]']
-connector: <aiohttp.connector.TCPConnector object at 0x7dadd60b8b00>
-2025-12-16 22:30:56,941 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:30:57,006 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:31:01,469 INFO [aiogram.event] Update id=318848353 is not handled. Duration 5 ms by bot id=5822159229
-2025-12-16 22:31:15,798 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:31:15,799 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:31:15,799 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:31:26,982 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:31:29,677 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:31:31,318 INFO [aiogram.event] Update id=318848355 is handled. Duration 1386 ms by bot id=5822159229
-2025-12-16 22:31:35,032 INFO [aiogram.event] Update id=318848356 is handled. Duration 77 ms by bot id=5822159229
-2025-12-16 22:31:37,367 INFO [aiogram.event] Update id=318848357 is handled. Duration 67 ms by bot id=5822159229
-2025-12-16 22:31:41,153 INFO [aiogram.event] Update id=318848358 is handled. Duration 451 ms by bot id=5822159229
-2025-12-16 22:32:32,062 INFO [aiogram.event] Update id=318848359 is handled. Duration 238 ms by bot id=5822159229
-2025-12-16 22:32:33,730 INFO [aiogram.event] Update id=318848360 is handled. Duration 81 ms by bot id=5822159229
-2025-12-16 22:32:35,728 INFO [aiogram.event] Update id=318848361 is handled. Duration 93 ms by bot id=5822159229
-2025-12-16 22:32:39,361 INFO [aiogram.event] Update id=318848362 is handled. Duration 517 ms by bot id=5822159229
-2025-12-16 22:33:15,475 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:33:15,476 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:33:15,476 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:33:15,993 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x7bf389644ad0>
-2025-12-16 22:33:22,191 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:33:22,259 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:33:27,042 INFO [aiogram.event] Update id=318848364 is handled. Duration 565 ms by bot id=5822159229
-2025-12-16 22:33:28,049 INFO [aiogram.event] Update id=318848365 is handled. Duration 113 ms by bot id=5822159229
-2025-12-16 22:33:30,094 INFO [aiogram.event] Update id=318848366 is handled. Duration 74 ms by bot id=5822159229
-2025-12-16 22:33:33,474 INFO [aiogram.event] Update id=318848367 is handled. Duration 495 ms by bot id=5822159229
-2025-12-16 22:34:25,011 INFO [aiogram.event] Update id=318848368 is handled. Duration 203 ms by bot id=5822159229
-2025-12-16 22:34:28,354 INFO [aiogram.event] Update id=318848369 is handled. Duration 81 ms by bot id=5822159229
-2025-12-16 22:34:30,908 INFO [aiogram.event] Update id=318848370 is handled. Duration 77 ms by bot id=5822159229
-2025-12-16 22:34:34,822 INFO [aiogram.event] Update id=318848371 is handled. Duration 862 ms by bot id=5822159229
-2025-12-16 22:36:31,085 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:36:31,086 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:36:31,086 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:36:31,594 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x74d04eebcb00>
-2025-12-16 22:36:36,831 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:36:36,896 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:36:41,135 INFO [aiogram.event] Update id=318848373 is handled. Duration 329 ms by bot id=5822159229
-2025-12-16 22:36:42,419 INFO [aiogram.event] Update id=318848374 is handled. Duration 82 ms by bot id=5822159229
-2025-12-16 22:36:44,126 INFO [aiogram.event] Update id=318848375 is handled. Duration 71 ms by bot id=5822159229
-2025-12-16 22:36:47,742 INFO [aiogram.event] Update id=318848376 is handled. Duration 176 ms by bot id=5822159229
-2025-12-16 22:37:09,127 INFO [aiogram.event] Update id=318848377 is handled. Duration 5 ms by bot id=5822159229
-2025-12-16 22:37:26,244 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:37:26,245 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:37:26,245 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:37:26,691 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x78eb87a3bd40>
-2025-12-16 22:38:37,104 INFO [aiogram.dispatcher] Start polling
-2025-12-16 22:38:37,166 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:38:40,148 INFO [aiogram.event] Update id=318848378 is handled. Duration 454 ms by bot id=5822159229
-2025-12-16 22:38:47,040 INFO [aiogram.event] Update id=318848379 is handled. Duration 176 ms by bot id=5822159229
-2025-12-16 22:38:51,048 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-16 22:38:51,048 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-16 22:38:51,049 INFO [aiogram.dispatcher] Polling stopped
-2025-12-16 22:38:51,552 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x78dfc3e2db80>
-2025-12-16 22:38:51,553 ERROR [asyncio] Unclosed connector
-connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x78dfc3e34890>, 23116.045664194)]']
-connector: <aiohttp.connector.TCPConnector object at 0x78dfc4381820>
-2025-12-17 11:09:22,110 INFO [aiogram.dispatcher] Start polling
-2025-12-17 11:09:22,164 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-17 11:09:30,466 INFO [aiogram.event] Update id=318848380 is handled. Duration 279 ms by bot id=5822159229
-2025-12-17 11:09:54,905 WARNING [aiogram.dispatcher] Received SIGINT signal
-2025-12-17 11:09:54,906 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
-2025-12-17 11:09:54,906 INFO [aiogram.dispatcher] Polling stopped
-2025-12-17 11:09:55,281 ERROR [asyncio] Unclosed client session
-client_session: <aiohttp.client.ClientSession object at 0x76b32cd31d00>
+2025-12-17 17:00:26,287 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:00:26,308 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:00:26,349 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:00:41,327 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:00:56,342 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:01:11,355 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:01:15,478 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:01:15,479 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:01:15,479 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:01:21,733 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:01:21,753 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:01:21,796 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:01:36,765 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:01:51,784 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:02:06,797 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:02:11,134 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:02:11,134 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:02:11,135 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:02:26,443 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:02:26,461 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:02:26,511 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:02:41,472 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:02:56,488 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:03:11,500 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:03:26,510 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe/Wien'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe/Wien'
+2025-12-17 17:03:33,382 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:03:33,383 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:03:33,383 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:03:37,855 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:03:37,874 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 93, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 45, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe'
+2025-12-17 17:03:37,915 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:03:45,574 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:03:45,575 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:03:45,575 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:03:53,331 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:03:53,350 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 44, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe'
+2025-12-17 17:03:53,395 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:04:08,362 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 44, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe'
+2025-12-17 17:04:23,280 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:04:23,281 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:04:23,281 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:04:23,370 ERROR [scheduler] Ошибка в schedule_tick()
+Traceback (most recent call last):
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 92, in schedule_runner
+    await schedule_tick()
+  File "/home/misha/Mishania_moget/schedule_bot_training/main.py", line 44, in schedule_tick
+    moscow_time = datetime.now(pytz.timezone('Europe'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/misha/Mishania_moget/schedule_bot_training/.venv/lib/python3.12/site-packages/pytz/__init__.py", line 188, in timezone
+    raise UnknownTimeZoneError(zone)
+pytz.exceptions.UnknownTimeZoneError: 'Europe'
+2025-12-17 17:06:23,209 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:06:23,363 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:06:34,618 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:06:34,619 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:06:34,619 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:06:44,586 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:06:44,655 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:06:53,103 INFO [aiogram.event] Update id=318848402 is handled. Duration 382 ms by bot id=5822159229
+2025-12-17 17:06:55,004 INFO [aiogram.event] Update id=318848403 is handled. Duration 141 ms by bot id=5822159229
+2025-12-17 17:07:00,241 INFO [aiogram.event] Update id=318848404 is handled. Duration 92 ms by bot id=5822159229
+2025-12-17 17:07:03,513 INFO [aiogram.event] Update id=318848405 is handled. Duration 90 ms by bot id=5822159229
+2025-12-17 17:07:04,739 INFO [aiogram.event] Update id=318848406 is handled. Duration 83 ms by bot id=5822159229
+2025-12-17 17:07:06,059 INFO [aiogram.event] Update id=318848407 is handled. Duration 330 ms by bot id=5822159229
+2025-12-17 17:07:08,843 INFO [aiogram.event] Update id=318848408 is handled. Duration 96 ms by bot id=5822159229
+2025-12-17 17:07:10,990 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:07:10,991 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:07:10,991 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:07:11,489 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7e16b497cda0>
+2025-12-17 17:07:11,490 ERROR [asyncio] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7e16b54085f0>, 4338.641246138)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7e16b557f230>
+2025-12-17 17:07:11,496 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7e16b487a960>
+2025-12-17 17:07:11,496 ERROR [asyncio] Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7e16b5409310>, 4342.745758185)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7e16b487aed0>
+2025-12-17 17:07:15,760 INFO [aiogram.dispatcher] Start polling
+2025-12-17 17:07:15,812 INFO [aiogram.dispatcher] Run polling for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:07:18,789 INFO [aiogram.event] Update id=318848410 is handled. Duration 544 ms by bot id=5822159229
+2025-12-17 17:07:20,036 INFO [aiogram.event] Update id=318848411 is handled. Duration 83 ms by bot id=5822159229
+2025-12-17 17:07:28,527 INFO [aiogram.event] Update id=318848412 is handled. Duration 123 ms by bot id=5822159229
+2025-12-17 17:09:45,009 WARNING [aiogram.dispatcher] Received SIGINT signal
+2025-12-17 17:09:45,010 INFO [aiogram.dispatcher] Polling stopped for bot @Iaavlp_bot id=5822159229 - 'Iaavlp'
+2025-12-17 17:09:45,010 INFO [aiogram.dispatcher] Polling stopped
+2025-12-17 17:09:45,581 ERROR [asyncio] Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x75bf0bbd7590>
